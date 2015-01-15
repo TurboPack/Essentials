@@ -24,33 +24,13 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsDbEd;
   {-data-aware calculator and calendar popup edit controls}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Classes, Controls, DB, DbCtrls,
-  {$IFNDEF VER130}
-  DBTables,
-  {$ENDIF}
-  Forms, Graphics, Menus, Messages, StdCtrls,
+  Windows, Classes, Controls, DB, DbCtrls, Forms, Graphics, Menus, Messages, StdCtrls,
   EsBase, EsCal, EsCalc, EsEdCal, EsEdCalc, EsEdPop;
 
 const
@@ -96,10 +76,8 @@ type
       message CM_ENTER;
     procedure CMExit(var Message : TCMExit);
       message CM_EXIT;
-    {$IFDEF Win32}
     procedure CMGetDataLink(var Message : TMessage);
       message CM_GETDATALINK;
-    {$ENDIF Win32}
     {.Z-}
 
   protected
@@ -150,11 +128,9 @@ type
   TEsDbNumberEdit = class(TEsCustomDbNumberEdit)
   published
     {properties}
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
     property AllowIncDec;
     property AutoSelect;
     property AutoSize;
@@ -202,9 +178,7 @@ type
     property OnMouseDown;
     property OnMouseMove;
     property OnMouseUp;
-    {$IFDEF Win32}
     property OnStartDrag;
-    {$ENDIF Win32}
   end;
 
   TEsCustomDbDateEdit = class(TEsCustomDateEdit)
@@ -242,10 +216,8 @@ type
       message CM_ENTER;
     procedure CMExit(var Message : TCMExit);
       message CM_EXIT;
-    {$IFDEF Win32}
     procedure CMGetDataLink(var Message : TMessage);
       message CM_GETDATALINK;
-    {$ENDIF Win32}
     {.Z-}
 
   protected
@@ -296,11 +268,9 @@ type
   TEsDbDateEdit = class(TEsCustomDbDateEdit)
   published
     {properties}
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
     property AllowIncDec;
     property AutoSelect;
     property AutoSize;
@@ -354,14 +324,14 @@ type
     property OnMouseDown;
     property OnMouseMove;
     property OnMouseUp;
-    {$IFDEF Win32}
     property OnStartDrag;
-    {$ENDIF Win32}
   end;
 
 
 implementation
 
+uses
+  SysUtils;
 
 {*** TEsCustomDbNumberEdit ***}
 
@@ -396,12 +366,10 @@ begin
   DoExit;
 end;
 
-{$IFDEF Win32}
 procedure TEsCustomDbNumberEdit.CMGetDataLink(var Message : TMessage);
 begin
   Message.Result := Integer(FDataLink);
 end;
-{$ENDIF Win32}
 
 constructor TEsCustomDbNumberEdit.Create(AOwner : TComponent);
 begin
@@ -409,9 +377,7 @@ begin
 
   inherited ReadOnly := True;
 
-  {$IFDEF Win32}
   ControlStyle := ControlStyle + [csReplicatable];
-  {$ENDIF Win32}
 
   FDataLink := TFieldDataLink.Create;
   FDataLink.Control := Self;
@@ -424,7 +390,7 @@ end;
 procedure TEsCustomDbNumberEdit.DataChange(Sender : TObject);
 var
   P : Integer;
-  S : string[80];
+  S : string;
 begin
   if FDataLink.Field <> nil then begin
     if FAlignment <> FDataLink.Field.Alignment then begin
@@ -442,7 +408,7 @@ begin
       P := Pos('Field', S);
       if P > 0 then begin
         S[P] := ')';
-        S[0] := AnsiChar(P);
+        SetLength(S, P);
       end else
         S := Concat(S, ')');
       Text := S;
@@ -519,11 +485,7 @@ begin
       I := 1
     else
       I := 2;
-    {$IFDEF Win32}
     Result.X := SendMessage(Handle, EM_GETMARGINS, 0, 0) and $0000FFFF + I;
-    {$ELSE}
-    Result.X := 2;
-    {$ENDIF Win32}
     Result.Y := I;
   end else begin
     if BorderStyle = bsNone then
@@ -556,12 +518,12 @@ end;
 
 procedure TEsCustomDbNumberEdit.KeyPress(var Key : Char);
 begin
-  if AllowIncDec and (Key in ['+', '-']) then
+  if AllowIncDec and CharInSet(Key, ['+', '-']) then
     FDataLink.Edit;
 
   inherited KeyPress(Key);
 
-  if (Key in [#32..#255]) and (FDataLink.Field <> nil) and
+  if CharInSet(Key, [#32..#255]) and (FDataLink.Field <> nil) and
      not FDataLink.Field.IsValidChar(Key) then begin
     MessageBeep(0);
     Key := #0;
@@ -620,10 +582,8 @@ end;
 procedure TEsCustomDbNumberEdit.SetDataSource(Value : TDataSource);
 begin
   FDataLink.DataSource := Value;
-  {$IFDEF Win32}
   if Value <> nil then
     Value.FreeNotification(Self);
-  {$ENDIF Win32}
 end;
 
 procedure TEsCustomDbNumberEdit.SetFocused(Value : Boolean);
@@ -662,11 +622,7 @@ var
   PS      : TPaintStruct;
   S       : string;
 begin
-  {$IFDEF Win32}
   if ((FAlignment = taLeftJustify) or FFocused) and not (csPaintCopy in ControlState) then begin
-  {$ELSE}
-  if ((FAlignment = taLeftJustify) or FFocused) then begin
-  {$ENDIF Win32}
     inherited;
     Exit;
   end;
@@ -690,11 +646,9 @@ begin
         InflateRect(R, -1, -1);
       end;
       Brush.Color := Color;
-      {$IFDEF Win32}
       if (csPaintCopy in ControlState) and (FDataLink.Field <> nil) then begin
         S := FDataLink.Field.DisplayText;
       end else
-      {$ENDIF Win32}
         S := Text;
       if PasswordChar <> #0 then FillChar(S[1], Length(S), PasswordChar);
       Margins := GetTextMargins;
@@ -757,12 +711,10 @@ begin
   SetFocused(False);
 end;
 
-{$IFDEF Win32}
 procedure TEsCustomDbDateEdit.CMGetDataLink(var Message : TMessage);
 begin
   Message.Result := Integer(FDataLink);
 end;
-{$ENDIF Win32}
 
 constructor TEsCustomDbDateEdit.Create(AOwner : TComponent);
 begin
@@ -770,9 +722,7 @@ begin
 
   inherited ReadOnly := True;
 
-  {$IFDEF Win32}
   ControlStyle := ControlStyle + [csReplicatable];
-  {$ENDIF Win32}
 
   FDataLink := TFieldDataLink.Create;
   FDataLink.Control := Self;
@@ -786,7 +736,7 @@ procedure TEsCustomDbDateEdit.DataChange(Sender : TObject);
 var
   P  : Integer;
   DT : TDateTime;
-  S  : string[80];
+  S  : string;
 begin
   if FDataLink.Field <> nil then begin
     if FAlignment <> FDataLink.Field.Alignment then begin
@@ -806,7 +756,7 @@ begin
       P := Pos('Field', S);
       if P > 0 then begin
         S[P] := ')';
-        S[0] := AnsiChar(P);
+        SetLength(S, P);
       end else
         S := Concat(S, ')');
       Text := S;
@@ -883,11 +833,7 @@ begin
       I := 1
     else
       I := 2;
-    {$IFDEF Win32}
     Result.X := SendMessage(Handle, EM_GETMARGINS, 0, 0) and $0000FFFF + I;
-    {$ELSE}
-    Result.X := 2;
-    {$ENDIF Win32}
     Result.Y := I;
   end else begin
     if BorderStyle = bsNone then
@@ -920,12 +866,12 @@ end;
 
 procedure TEsCustomDbDateEdit.KeyPress(var Key : Char);
 begin
-  if AllowIncDec and (Key in ['+', '-']) then
+  if AllowIncDec and CharInSet(Key, ['+', '-']) then
     FDataLink.Edit;
 
   inherited KeyPress(Key);
 
-  if (Key in [#32..#255]) and (FDataLink.Field <> nil) and
+  if CharInSet(Key, [#32..#255]) and (FDataLink.Field <> nil) and
      not FDataLink.Field.IsValidChar(Key) then begin
     MessageBeep(0);
     Key := #0;
@@ -984,10 +930,8 @@ end;
 procedure TEsCustomDbDateEdit.SetDataSource(Value : TDataSource);
 begin
   FDataLink.DataSource := Value;
-  {$IFDEF Win32}
   if Value <> nil then
     Value.FreeNotification(Self);
-  {$ENDIF Win32}
 end;
 
 procedure TEsCustomDbDateEdit.SetFocused(Value : Boolean);
@@ -1041,11 +985,7 @@ var
   PS      : TPaintStruct;
   S       : string;
 begin
-  {$IFDEF Win32}
   if ((FAlignment = taLeftJustify) or FFocused) and not (csPaintCopy in ControlState) then begin
-  {$ELSE}
-  if ((FAlignment = taLeftJustify) or FFocused) then begin
-  {$ENDIF Win32}
     inherited;
     Exit;
   end;
@@ -1069,11 +1009,9 @@ begin
         InflateRect(R, -1, -1);
       end;
       Brush.Color := Color;
-      {$IFDEF Win32}
       if (csPaintCopy in ControlState) and (FDataLink.Field <> nil) then begin
         S := FDataLink.Field.DisplayText;
       end else
-      {$ENDIF Win32}
         S := Text;
       if PasswordChar <> #0 then FillChar(S[1], Length(S), PasswordChar);
       Margins := GetTextMargins;

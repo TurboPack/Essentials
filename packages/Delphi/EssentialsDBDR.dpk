@@ -24,7 +24,7 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-package E111_R;
+package EssentialsDBDR;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
@@ -51,31 +51,16 @@ package E111_R;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'TurboPower Essentials 1.11 Runtime package - VCL140'}
-{$LIBSUFFIX '200'}
+{$DESCRIPTION 'TurboPower Essentials Delphi (db) Runtime package'}
 {$RUNONLY}
 {$IMPLICITBUILD OFF}
 
 requires
-  vcl;
+  vcl,
+  vcldb,
+  EssentialsDR;
 
 contains
-  EsBase in '..\..\source\EsBase.pas',
-  EsCal in '..\..\source\EsCal.pas',
-  EsCalc in '..\..\source\EsCalc.pas',
-  EsClrCbx in '..\..\source\EsClrCbx.pas',
-  EsConst in '..\..\source\EsConst.pas',
-  EsData in '..\..\source\EsData.pas',
-  EsEdCal in '..\..\source\EsEdCal.pas',
-  EsEdCalc in '..\..\source\EsEdCalc.pas',
-  EsEdPop in '..\..\source\EsEdPop.pas',
-  EsGrad in '..\..\source\EsGrad.pas',
-  EsLabel in '..\..\source\EsLabel.pas',
-  EsMarque in '..\..\source\EsMarque.pas',
-  EsMnuBtn in '..\..\source\EsMnuBtn.pas',
-  EsRollup in '..\..\source\EsRollup.pas',
-  EsTile in '..\..\source\EsTile.pas',
-  EsUtil in '..\..\source\EsUtil.pas',
-  EsSrmgr in '..\..\source\EsSrmgr.pas';
+  EsDbEd in '..\..\source\EsDbEd.pas';
 
 end.
