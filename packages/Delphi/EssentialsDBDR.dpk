@@ -49,7 +49,7 @@ package EssentialsDBDR;
 {$WRITEABLECONST ON}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
-{$DEFINE DEBUG}
+{$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'TurboPower Essentials Delphi (db) Runtime package'}
 {$RUNONLY}
