@@ -433,8 +433,6 @@ var
   DX : Integer;
   DY : Integer;
 begin
-  DX := 0;
-  DY := 0;
   if FEsLabel.Visible and Assigned(FEsLabel.ALabel) and (FEsLabel.ALabel.Parent <> nil) and
      not (csLoading in ComponentState) then begin
     if DefaultLabelPosition = dlpTopLeft then begin

@@ -1290,7 +1290,6 @@ var
   procedure DrawDay(R, C, I : Integer; Grayed, Current : Boolean);
   var
     S : string;
-    Cl     : TColor;
     OldIdx : Integer;
     NewIdx : Integer;
   begin
@@ -1300,6 +1299,7 @@ var
     if Grayed then
       Canvas.Font.Color := FColors.InactiveDays;
 
+    NewIdx := 0;
     if not Grayed or FShowInactive then
       NewIdx := ((R-2) * 7) + Succ(C);                                   {!!.11}
       OldIdx := clFirst + Pred(clDay);                                   {!!.11}

@@ -357,7 +357,7 @@ var
 begin
   inherited KeyPress(Key);
 
-  if FAllowIncDec  and (Key in ['+', '-']) then begin
+  if FAllowIncDec  and CharInSet(Key, ['+', '-']) then begin
     DoExit; {accept current date}
     if FDate = 0 then
       DecodeDate(SysUtils.Date, Y, M, D)
@@ -627,14 +627,14 @@ begin
     try
       {parse the string into subfields using a string list to hold the parts}
       I1 := 1;
-      while (I1 <= Length(Value)) and not (Value[I1] in ['0'..'9', 'A'..'Z']) do
+      while (I1 <= Length(Value)) and CharInSet(Value[I1], ['0'..'9', 'A'..'Z']) do
         Inc(I1);
       while I1 <= Length(Value) do begin
         I2 := I1;
-        while (I2 <= Length(Value)) and (Value[I2] in ['0'..'9', 'A'..'Z']) do
+        while (I2 <= Length(Value)) and CharInSet(Value[I2], ['0'..'9', 'A'..'Z']) do
           Inc(I2);
         StringList.Add(Copy(Value, I1, I2-I1));
-        while (I2 <= Length(Value)) and not (Value[I2] in ['0'..'9', 'A'..'Z']) do
+        while (I2 <= Length(Value)) and not CharInSet(Value[I2], ['0'..'9', 'A'..'Z']) do
           Inc(I2);
         I1 := I2;
       end;
@@ -658,7 +658,7 @@ begin
         case FieldOrder[Field] of
           'M' :
             begin
-              if (S = '') or (S[1] in ['0'..'9']) then begin {numeric month}
+              if (S = '') or CharInSet(S[1], ['0'..'9']) then begin {numeric month}
                 try
                   if S = '' then
                     Month := 0

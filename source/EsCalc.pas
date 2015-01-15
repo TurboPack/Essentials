@@ -1034,7 +1034,7 @@ begin
     cClearAll;
     for I := 1 to Length(S) do begin
       C := S[I];
-      if (C in ['0'..'9', {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator, '.', '+', '-', '*', '/', '=', '%']) then
+      if CharInSet(C, ['0'..'9', {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator, '.', '+', '-', '*', '/', '=', '%']) then
         KeyPress(C);
     end;
   end;

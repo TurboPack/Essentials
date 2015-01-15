@@ -259,7 +259,7 @@ var
 begin
   S := Text;
   for I := Length(S) downto 1 do
-    if not (S[I] in ['0'..'9', '+', '-', {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator]) then
+    if not CharInSet(S[I], ['0'..'9', '+', '-', {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator]) then
       Delete(S, I, 1);
   { catch any mal-formed text }                                       {!!.10}
   try                                                                 {!!.10}
@@ -300,12 +300,12 @@ var
 begin
   inherited KeyPress(Key);
 
-  if not (Key in [#27, '0'..'9', '.', {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator, #8, '+', '-']) then begin
+  if not CharInSet(Key, [#27, '0'..'9', '.', {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator, #8, '+', '-']) then begin
     Key := #0;
     MessageBeep(0);
   end;
 
-  if FAllowIncDec  and (Key in ['+', '-']) then begin
+  if FAllowIncDec  and CharInSet(Key, ['+', '-']) then begin
     if Text = '' then
       Text := '0';
     D := StrToFloat(Text);

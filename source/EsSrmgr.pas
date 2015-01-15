@@ -283,7 +283,7 @@ function TEsStringResource.GetString(Ident : TInt32) : string;
 var
   P : PIndexRec;
   Src : PWideChar;
-  Len, OLen : Integer;
+  Len : Integer;
 begin
   srLock;
   try
