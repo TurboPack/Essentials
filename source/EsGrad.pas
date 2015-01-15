@@ -24,30 +24,13 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsGrad;
   {-gadient component}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Classes, Controls, Graphics, Messages,
-  EsConst, EsData;
+  Windows, Classes, Controls, Graphics, Messages, EsConst, EsData;
 
 const
   MinColorBands = 2;   {two bands isn't much of a gradient}
@@ -134,11 +117,9 @@ type
   TEsGradient = class(TEsCustomGradient)
   published
     {properties}
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
     property Align;
     property ColorBands;
     property Direction;
@@ -154,9 +135,7 @@ type
     property OnMouseDown;
     property OnMouseMove;
     property OnMouseUp;
-    {$IFDEF WIN32}
     property OnStartDrag;
-    {$ENDIF WIN32}
   end;
 
 

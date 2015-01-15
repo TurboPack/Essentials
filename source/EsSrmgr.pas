@@ -77,40 +77,14 @@ Notes:
   --------------------------------------------------------------------
 }
 
-{$IFDEF Win32}
-  {include the resource compiled using BRCC32.EXE and SRMC.EXE}
-  {$R ESSRMGR.R32}
-{$ELSE}
-  {include the resource compiled using BRCC.EXE and SRMC.EXE}
-  {$R ESSRMGR.R16}
-{$ENDIF}
-
-{$R-,S-,I-}
-
-{$IFDEF Win32}
-  {$H+} {Long strings}                                                 {!!.02}
-{$ENDIF}
-
-{For BCB 3.0 package support.}
-{$IFDEF VER110}
-  {$ObjExportAll On}
-{$ENDIF}
-
-{$IFNDEF VER80}   {Delphi 1}
- {$IFNDEF VER90}  {Delphi 2}
-  {$IFNDEF VER93} {BCB 1}
-    {$DEFINE VERSION3} { Delphi 3.0 or BCB 3.0 or higher }
-  {$ENDIF}
- {$ENDIF}
-{$ENDIF}
+{$R ESSRMGR.R32}
 
 unit EsSrMgr;
 
 interface
 
 uses
-  {$IFDEF WIN32} Windows, {$ELSE} WinProcs, WinTypes, {$ENDIF}
-  Classes, SysUtils;
+  Windows, Classes, SysUtils;
 
 const
   DefReportError = False;
@@ -121,11 +95,7 @@ const
 type
   ETpsStringResourceError = class(Exception);
 
-{$IFDEF Win32}
   TInt32 = Integer;
-{$ELSE}
-  TInt32 = LongInt;
-{$ENDIF}
 
   PIndexRec = ^TIndexRec;
   TIndexRec = record
@@ -294,13 +264,7 @@ begin
     else begin
       Src := PWideChar(PAnsiChar(srP)+P^.ofs);
       Len := P^.len;
-      {$IFDEF UNICODE}
       Result := Copy(Src, 1, Len);
-      {$ELSE}
-      OLen :=  WideCharToMultiByte(CP_ACP, 0, Src, Len, nil, 0, nil, nil);
-      SetLength(Result, OLen);
-      WideCharToMultiByte(CP_ACP, 0, Src, Len, PChar(Result), OLen, nil, nil);
-      {$ENDIF}
     end;
   finally
     srUnLock;
@@ -355,17 +319,13 @@ var
   Buf : array[0..255] of Char;
 begin
   StrPLCopy(Buf, ResourceName, Length(Buf)-1);
-  {$IFDEF VERSION3}
   Instance := FindResourceHInstance(Instance);
-  {$ENDIF}
   H := FindResource(Instance, Buf, RT_RCDATA);
   if H = 0 then begin
-    {$IFDEF VERSION3}                                                    {!!.09}
     Instance := HInstance;                                               {!!.09}
     {try to find in main binary}                                         {!!.09}
     H := FindResource(Instance, Buf, RT_RCDATA);                         {!!.09}
     if (H = 0) then {still not found}                                    {!!.09}
-    {$ENDIF}
     raise ETpsStringResourceError.CreateFmt(TpsResStrings[3], [ResourceName]);
   {end else begin }                                                      {!!.09}
   end;
@@ -405,11 +365,7 @@ end;
 initialization
   TpsResStrings := TEsStringResource.Create(HInstance, 'ESSRMGR_STRINGS');{!!.01}
 
-{$IFDEF Win32}
 finalization
   FreeTpsResStrings;
-{$ELSE}
-  AddExitProc(FreeTpsResStrings);
-{$ENDIF}
 
 end.

@@ -24,33 +24,13 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFDEF WIN32}                                                         {!!.02}
-  {$J+} {Writable constants}                                           {!!.02}
-{$ENDIF}                                                               {!!.02}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsEdPop;
   {-base popup edit field class}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Buttons, Classes, Controls, ExtCtrls, Forms, Graphics, Menus, Messages,
+  Windows, Buttons, Classes, Controls, ExtCtrls, Forms, Graphics, Menus, Messages,
   StdCtrls, SysUtils,
   EsBase, EsConst, EsData, EsLabel, EsUtil;
 
@@ -384,7 +364,6 @@ begin
   end;
 
   H := ClientHeight;
-  {$IFDEF Win32}
   if BorderStyle = bsNone then begin
     FButton.Height := H;
     FButton.Width := (FButton.Height div 4) * 3;
@@ -410,15 +389,6 @@ begin
     FButton.Left := Width - FButton.Width - 1;
     FButton.Top := 1;
   end;
-  {$ELSE} {block revised}                                              {!!.02}
-  FButton.Height := H;
-  FButton.Width := (FButton.Height div 4) * 3;
-  if (FButton.Glyph <> nil) then
-    if FButton.Width < FButton.Glyph.Width+6 then
-      FButton.Width := FButton.Glyph.Width+6;
-  FButton.Left := Width - FButton.Width;
-  FButton.Top := 0;
-  {$ENDIF}
 end;
 
 procedure TEsEdPopup.SetShowButton(Value : Boolean);

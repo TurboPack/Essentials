@@ -24,29 +24,13 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsMnuBtn;
   {-menu popup button}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Buttons, Classes, Controls, Dialogs, ExtCtrls, Graphics, Messages, Menus,
+  Windows, Buttons, Classes, Controls, Dialogs, ExtCtrls, Graphics, Messages, Menus,
   EsBase;
 
 type
@@ -150,11 +134,9 @@ type
   TEsMenuButton = class(TEsCustomMenuButton)
   published
     {properties}
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
     property Caption;
     property Cursor;
     property DragCursor;
@@ -398,11 +380,7 @@ begin
       B := TBitmap.Create;
       try                                                              {!!.04}
         B.Assign(mbGlyph); {copy}
-        {$IFDEF Win32}
         G := TImageList.CreateSize(B.Width, B.Height);
-        {$ELSE}
-        G := TImageList.Create(B.Width, B.Height);
-        {$ENDIF}
         try
           G.AddMasked(B, B.Canvas.Pixels[0,0]);
           if Length(FCaption) = 0 then begin

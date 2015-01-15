@@ -24,29 +24,13 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsEdCal;
   {-date edit field with popup calendar}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Buttons, Classes, Controls, Forms, Graphics, Menus, Messages,
+  Windows, Buttons, Classes, Controls, Forms, Graphics, Menus, Messages,
   StdCtrls, SysUtils,
   EsBase, EsCal, EsConst, EsEdPop, EsUtil;
 
@@ -195,11 +179,9 @@ type
   TEsDateEdit = class(TEsCustomDateEdit)
   published
     {properties}
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
     property AllowIncDec;
     property AutoSelect;
     property AutoSize;
@@ -253,9 +235,7 @@ type
     property OnMouseMove;
     property OnMouseUp;
     property OnSetDate;
-    {$IFDEF Win32}
     property OnStartDrag;
-    {$ENDIF Win32}
   end;
 
 
@@ -276,7 +256,7 @@ begin
   FEpoch := DefaultEpoch;
   FForceCentury := False;                                              {!!.02}
   FRequiredFields := [rfMonth, rfDay];
-  FTodayString := {$IFDEF XE2}FormatSettings.{$ENDIF}DateSeparator;
+  FTodayString := FormatSettings.DateSeparator;
   FPopupCalHeight := calDefHeight;
   FPopupCalWidth := calDefWidth;
   FPopupCalFont := TFont.Create;
@@ -396,7 +376,7 @@ function TEsCustomDateEdit.FormatDate(Value : TDateTime) : string;
 var
   S : string;
 begin
-  S := {$IFDEF XE2}FormatSettings.{$ENDIF}ShortDateFormat;
+  S := FormatSettings.ShortDateFormat;
   if FForceCentury then
     if Pos('yyyy', S) = 0 then
       Insert('yy', S, Pos('yy', S));
@@ -478,9 +458,7 @@ end;
 procedure TEsCustomDateEdit.PopupOpen;
 var
   P : TPoint;
-  {$IFDEF Win32}
   R : TRect;                                                           {!!.04}
-  {$ENDIF}
 begin
   inherited PopupOpen;
 
@@ -522,25 +500,14 @@ begin
   {set colors}
   Calendar.Colors.Assign(FPopupCalColors);
   {determine the proper position}
-  {$IFDEF Win32}
   P := ClientToScreen(Point(-2, Height-2));
-  {$ELSE}
-  P := ClientToScreen(Point(0, Height));
-  {$ENDIF}
 
   {!!.04}
-  {$IFDEF Win32}
   SystemParametersInfo(SPI_GETWORKAREA, 0, @R, 0);
   if P.Y + Calendar.Height >= R.Bottom then
     P.Y := P.Y - Calendar.Height - Height - 2;
   if P.X + Calendar.Width >= R.Right then
     P.X := R.Right - Calendar.Width - 1;
-  {$ELSE}
-  if P.Y + Calendar.Height >= Screen.Height then
-    P.Y := P.Y - Calendar.Height - Height - 2;
-  if P.X + Calendar.Width >= Screen.Width then
-    P.X := Screen.Width - Calendar.Width - 1;
-  {$ENDIF}
 
   MoveWindow(Calendar.Handle, P.X, P.Y, Calendar.Width, Calendar.Height, False);
 
@@ -676,7 +643,7 @@ begin
                 S := Copy(S, 1, 3);
                 Error := SCEsMonthNameConvertError; {error converting month name}
                 repeat
-                  if S = UpperCase(Copy({$IFDEF XE2}FormatSettings.{$ENDIF}ShortMonthNames[I1], 1, Length(S))) then begin
+                  if S = UpperCase(Copy(FormatSettings.ShortMonthNames[I1], 1, Length(S))) then begin
                     Month := I1;
                     I1 := 13;
                     Error := 0;

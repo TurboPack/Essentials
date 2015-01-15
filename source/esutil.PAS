@@ -24,29 +24,13 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsUtil;
   {-general utility routines}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Graphics, SysUtils, EsSRMgr;                                       {!!.06}
+  Windows, Graphics, SysUtils, EsSRMgr;                                       {!!.06}
 
 function DaysInMonth(Year, Month : Integer) : Integer;
   {-return the number of days in the specified month of a given year}
@@ -137,10 +121,6 @@ end;
 initialization
   StrRes := TEsStringResource.Create(HInstance, 'ESSENTIALS_STRINGS_ENGLISH'); {!!.06}
 
-{$IFDEF Win32}
 finalization
   FreeStrRes;
-{$ELSE}
-  AddExitProc(FreeStrRes);
-{$ENDIF}
 end.

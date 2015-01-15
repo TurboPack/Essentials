@@ -24,29 +24,13 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C FIXED PRELOAD}
-{$ENDIF}
-
 unit EsMarque;
   {-scrolling marquee component}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Classes, Controls, ExtCtrls, Forms, Graphics, Messages, MMSystem, StdCtrls,
+  Windows, Classes, Controls, ExtCtrls, Forms, Graphics, Messages, MMSystem, StdCtrls,
   SysUtils,                                                            {!!.01}
   EsData, EsLabel;
 
@@ -157,11 +141,9 @@ type
 
   TEsScrollingMarquee = class(TEsCustomScrollingMarquee)
   published
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
     {properties}
     property Active;
     property Align;
@@ -211,8 +193,7 @@ const
   SafetyMargin = 15;
 
 {timer callback routine}
-procedure smTimerProc(uTimerId, uMessage : UINT; dwUser, dw1, dw2 : DWORD);
-  {$IFDEF Win32} stdcall; {$ELSE} far; {$ENDIF}
+procedure smTimerProc(uTimerId, uMessage : UINT; dwUser, dw1, dw2 : DWORD); stdcall;
 begin
   PostMessage(dwUser, SM_TIMER, 0, uTimerId);
 end;
@@ -257,12 +238,7 @@ begin
   FScrollDirection := sdRightToLeft;
 
   {create our window handle}
-{$IFDEF VER140}
   smHandle := Classes.AllocateHWnd(smWndProc);                       {!!.09}
-{$ELSE}
-  smHandle := AllocateHWnd(smWndProc);
-{$ENDIF}
-
 
   {create our drawing bitmap}
   smBmp := TBitmap.Create;
@@ -288,11 +264,7 @@ begin
 
   {destroy our window handle}
   if smHandle <> 0 then begin
-{$IFDEF VER140}
     Classes.DeallocateHWnd(smHandle);                                {!!.09}
-{$ELSE}
-    DeallocateHWnd(smHandle);
-{$ENDIF}
     smHandle := 0;
   end;
 
@@ -523,11 +495,7 @@ begin
     R := smResolution;
 
   if FActive then begin                                                {!!.06}
-    {$IFDEF Win32}
     smTimerId := timeSetEvent(smDelay, R, @smTimerProc, smHandle, TIME_PERIODIC);
-    {$ELSE}
-    smTimerId := timeSetEvent(smDelay, R, smTimerProc, smHandle, TIME_PERIODIC);
-    {$ENDIF}
   end;
 end;
 

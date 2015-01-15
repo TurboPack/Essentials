@@ -24,22 +24,6 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-{$G+} {286 Instructions}
-{$N+} {Numeric Coprocessor}
-
-{$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsCal;
   {-calendar component}
 
@@ -56,29 +40,17 @@ type
                 dtThursday, dtFriday, dtSaturday);
 
 const
-  {$IFDEF Win32}
   calDefBorderStyle       = bsNone;
-  {$ELSE}
-  calDefBorderStyle       = bsSingle;
-  {$ENDIF Win32}
   calDefColor             = clBtnFace;                                 {!!.01}
   calDefDateFormat        = dfLong;
   calDefDayNameWidth      = 3;
-  {$IFDEF Win32}
   calDefHeight            = 140;
-  {$ELSE}
-  calDefHeight            = 200;
-  {$ENDIF Win32}
   calDefShowDate          = True;
   calDefShowInactive      = False;
   calDefShowToday         = True;
   calDefTabStop           = True;
   calDefWeekStarts        = dtSunday;
-  {$IFDEF Win32}
   calDefWidth             = 200;
-  {$ELSE}
-  calDefWidth             = 240;
-  {$ENDIF Win32}
   calMargin               = 4;        {left, right, and top margin}
 
 type
@@ -252,15 +224,8 @@ type
       override;
     procedure DoOnChange(Value : TDateTime);
       dynamic;
-    {$IFDEF NeedMouseWheel}                                            {!!.05}
     procedure DoOnMouseWheel(Shift : TShiftState; Delta, XPos, YPos : SmallInt);
       override;
-    {$ELSE}                                                            {!!.05}
-    {$IFNDEF Windows}                                                  {!!.05}
-    function DoMouseWheel(Shift: TShiftState; WheelDelta: Integer; MousePos: TPoint): Boolean;
-      override;                                                        {!!.05}
-    {$ENDIF}                                                           {!!.05}
-    {$ENDIF}                                                           {!!.05}
     procedure KeyDown(var Key : Word; Shift : TShiftState);
       override;
     procedure KeyPress(var Key : Char);
@@ -352,11 +317,9 @@ type
 
   TEsCalendar = class(TEsCustomCalendar)
   published
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
     {properties}
     property Align;
     property BorderStyle;
@@ -400,15 +363,7 @@ type
     property OnMouseDown;
     property OnMouseMove;
     property OnMouseUp;
-    {$IFNDEF NeedMouseWheel}                                          {!!.05}
-    {$IFNDEF Windows}                                                 {!!.05}
-    property OnMouseWheelDown;                                        {!!.05}
-    property OnMouseWheelUp;                                          {!!.05}
-    {$ENDIF}                                                          {!!.05}
-    {$ENDIF}                                                          {!!.05}
-    {$IFDEF Win32}
     property OnStartDrag;
-    {$ENDIF Win32}
   end;
 
 
@@ -699,10 +654,8 @@ begin
   if (csLoading in ComponentState) or not HandleAllocated then
     Exit;
 
-  {$IFDEF Win32}
   if NewStyleControls and (FBorderStyle = bsSingle) then
     RecreateWnd;
-  {$ENDIF}
 
   Invalidate;
 end;
@@ -812,20 +765,16 @@ begin
     if clPopup then begin
       Style := WS_POPUP or WS_BORDER;
       WindowClass.Style := WindowClass.Style or CS_SAVEBITS;
-      {$IFDEF Win32}
       Ctl3D := False;
       if NewStyleControls then
         ExStyle := WS_EX_TOOLWINDOW or WS_EX_CLIENTEDGE;
-      {$ENDIF Win32}
     end;
   end;
 
-  {$IFDEF Win32}
   if NewStyleControls and Ctl3D and (FBorderStyle = bsSingle) then begin
     Params.Style := Params.Style and not WS_BORDER;
     Params.ExStyle := Params.ExStyle or WS_EX_CLIENTEDGE;
   end;
-  {$ENDIF}
 end;
 
 procedure TEsCustomCalendar.CreateWnd;
@@ -854,7 +803,6 @@ begin
     FOnChange(Self, Value);
 end;
 
-{$IFDEF NeedMouseWheel}                                                {!!.05}
 procedure TEsCustomCalendar.DoOnMouseWheel(Shift : TShiftState; Delta, XPos, YPos : SmallInt);
 var
   Key : Word;
@@ -884,44 +832,6 @@ begin
     KeyDown(Key, []);
   end;
 end;
-{$ELSE}                                                                {!!.05}
-{$IFNDEF Windows}                                                      {!!.05}
-{!!.05 added}
-function TEsCustomCalendar.DoMouseWheel(Shift: TShiftState; WheelDelta: Integer; MousePos: TPoint): Boolean;
-var
-  Key : Word;
-begin
-  // we always return true - if there's an event handler that returns
-  // false, we'll do the work; if it returns true, the work has been
-  // done, ergo this routine should return true.
-  Result := true;
-  if not inherited DoMouseWheel(Shift, WheelDelta, MousePos) then begin
-    if Abs(WheelDelta) = WHEEL_DELTA then begin
-      {inc/dec month}
-      if WheelDelta < 0 then
-        Key := VK_NEXT
-      else
-        Key := VK_PRIOR;
-      KeyDown(Key, []);
-    end else if Abs(WheelDelta) > WHEEL_DELTA then begin
-      {inc/dec year}
-      if WheelDelta < 0 then
-        Key := VK_NEXT
-      else
-        Key := VK_PRIOR;
-      KeyDown(Key, [ssCtrl]);
-    end else if Abs(WheelDelta) < WHEEL_DELTA then begin
-      {inc/dec Week}
-      if WheelDelta < 0 then
-        Key := VK_DOWN
-      else
-        Key := VK_UP;
-      KeyDown(Key, []);
-    end;
-  end;
-end;
-{$ENDIF}                                                               {!!.05}
-{$ENDIF}                                                               {!!.05}
 
 procedure TEsCustomCalendar.KeyDown(var Key : Word; Shift : TShiftState);
 var
@@ -1167,7 +1077,7 @@ begin
       {create the menu items}
       repeat
         MI := TMenuItem.Create(M);
-        MI.Caption := {$IFDEF XE2}FormatSettings.{$ENDIF}LongMonthNames[I];
+        MI.Caption := FormatSettings.LongMonthNames[I];
         MI.Enabled := Enabled;
         MI.OnClick := calChangeMonth;
         MI.Tag := I;
@@ -1257,7 +1167,7 @@ var
         SunCol := I;
 
       {get the day name}
-      S := Copy({$IFDEF XE2}FormatSettings.{$ENDIF}ShortDayNames[Ord(DOW)+1], 1, FDayNameWidth);
+      S := Copy(FormatSettings.ShortDayNames[Ord(DOW)+1], 1, FDayNameWidth);
 
       {draw the day name above each column}
       DrawText(Canvas.Handle, @S[1], Length(S), clRowCol[1,I],

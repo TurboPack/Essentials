@@ -24,34 +24,49 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsConst;
   {-constant declarations}
 
-{$IFDEF Win32}
-  {$R ESCONST.R32}
-{$ELSE}
-  {$R ESCONST.R16}
-{$ENDIF}
+{$R ESCONST.R32}
 
 interface
 
 const
-{$I ESCONST.INC}
+  SCEsColorBlack            = 0;
+  SCEsColorMaroon           = 1;
+  SCEsColorGreen            = 2;
+  SCEsColorOlive            = 3;
+  SCEsColorNavy             = 4;
+  SCEsColorPurple           = 5;
+  SCEsColorTeal             = 6;
+  SCEsColorGray             = 7;
+  SCEsColorSilver           = 8;
+  SCEsColorRed              = 9;
+  SCEsColorLime             = 10;
+  SCEsColorYellow           = 11;
+  SCEsColorBlue             = 12;
+  SCEsColorFuchsia          = 13;
+  SCEsColorAqua             = 14;
+  SCEsColorWhite            = 15;
+
+  SCEsDayConvertError       = 20;
+  SCEsMonthConvertError     = 21;
+  SCEsMonthNameConvertError = 22;
+  SCEsYearConvertError      = 23;
+  SCEsDayRequired           = 24;
+  SCEsMonthRequired         = 25;
+  SCEsYearRequired          = 26;
+
+  SCEsLabelNotAttached      = 30;
+  SCEsBlankDateNotAllowed   = 31;
+  SCEsInvalidDay            = 32;
+  SCEsInvalidMonth          = 33;
+  SCEsInvalidMonthName      = 34;
+  SCEsInvalidYear           = 35;
+  SCEsDayIsRequired         = 36;
+  SCEsMonthIsRequired       = 37;
+  SCEsYearIsRequired        = 38;
+  SCEsInvalidDate           = 39;
 
 implementation
 

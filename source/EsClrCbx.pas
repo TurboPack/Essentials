@@ -24,33 +24,13 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFDEF WIN32}                                                         {!!.02}
-  {$J+} {Writable constants}                                           {!!.02}
-{$ENDIF}                                                               {!!.02}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsClrCbx;
   {-color combobox selector}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Classes, Controls, Forms, Graphics, Menus, Messages, StdCtrls,
+  Windows, Classes, Controls, Forms, Graphics, Menus, Messages, StdCtrls,
   EsBase, EsConst, EsData, EsUtil;
 
 type
@@ -145,11 +125,9 @@ type
   TEsColorComboBox = class(TEsCustomColorComboBox)
   published
     {properties}
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
     property Color;
     property Ctl3D;
     property Cursor;
@@ -185,9 +163,7 @@ type
     property OnKeyDown;
     property OnKeyPress;
     property OnKeyUp;
-    {$IFDEF Win32}
     property OnStartDrag;
-    {$ENDIF Win32}
   end;
 
 

@@ -24,30 +24,13 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsTile;
   {-tile component}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Classes, Controls, Forms, Graphics, Messages,
-  EsConst, EsData;
+  Windows, Classes, Controls, Forms, Graphics, Messages, EsConst, EsData;
 
 type
   TEsCustomTile = class(TGraphicControl)
@@ -91,11 +74,9 @@ type
 
   TEsTile = class(TEsCustomTile)
   published
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
     property Align;
     property Bitmap;
     property Version;
@@ -107,9 +88,7 @@ type
     property OnMouseDown;
     property OnMouseMove;
     property OnMouseUp;
-    {$IFDEF WIN32}
     property OnStartDrag;
-    {$ENDIF WIN32}
   end;
 
 

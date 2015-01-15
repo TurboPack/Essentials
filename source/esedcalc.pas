@@ -24,29 +24,13 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsEdCalc;
   {-numeric edit field with popup calculator}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Buttons, Classes, Controls, Forms, Graphics, Menus, Messages,
+  Windows, Buttons, Classes, Controls, Forms, Graphics, Menus, Messages,
   StdCtrls, SysUtils,
   EsBase, EsCalc, EsConst, EsEdPop;
 
@@ -150,11 +134,9 @@ type
   TEsNumberEdit = class(TEsCustomNumberEdit)
   published
     {properties}
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
     property AllowIncDec;
     property AutoSelect;
     property AutoSize;
@@ -200,9 +182,7 @@ type
     property OnMouseDown;
     property OnMouseMove;
     property OnMouseUp;
-    {$IFDEF Win32}
     property OnStartDrag;
-    {$ENDIF Win32}
   end;
 
 
@@ -259,7 +239,7 @@ var
 begin
   S := Text;
   for I := Length(S) downto 1 do
-    if not CharInSet(S[I], ['0'..'9', '+', '-', {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator]) then
+    if not CharInSet(S[I], ['0'..'9', '+', '-', FormatSettings.DecimalSeparator]) then
       Delete(S, I, 1);
   { catch any mal-formed text }                                       {!!.10}
   try                                                                 {!!.10}
@@ -300,7 +280,7 @@ var
 begin
   inherited KeyPress(Key);
 
-  if not CharInSet(Key, [#27, '0'..'9', '.', {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator, #8, '+', '-']) then begin
+  if not CharInSet(Key, [#27, '0'..'9', '.', FormatSettings.DecimalSeparator, #8, '+', '-']) then begin
     Key := #0;
     MessageBeep(0);
   end;
@@ -420,9 +400,7 @@ end;
 procedure TEsCustomNumberEdit.PopupOpen;
 var
   P : TPoint;
-  {$IFDEF Win32}
   R : TRect;                                                           {!!.04}
-  {$ENDIF}
 begin
   inherited PopupOpen;
 
@@ -463,25 +441,14 @@ begin
   Calculator.Colors.Assign(FPopupCalcColors);
 
   {determine the proper position}
-  {$IFDEF Win32}
   P := ClientToScreen(Point(-2, Height-2));
-  {$ELSE}
-  P := ClientToScreen(Point(0, Height));
-  {$ENDIF}
 
   {!!.04}
-  {$IFDEF Win32}
   SystemParametersInfo(SPI_GETWORKAREA, 0, @R, 0);
   if P.Y + Calculator.Height >= R.Bottom then
     P.Y := P.Y - Calculator.Height - Height - 2;
   if P.X + Calculator.Width >= R.Right then
     P.X := R.Right - Calculator.Width - 1;
-  {$ELSE}
-  if P.Y + Calculator.Height >= Screen.Height then
-    P.Y := P.Y - Calculator.Height - Height - 2;
-  if P.X + Calculator.Width >= Screen.Width then
-    P.X := Screen.Width - Calculator.Width - 1;
-  {$ENDIF}
 
   MoveWindow(Calculator.Handle, P.X, P.Y, Calculator.Width, Calculator.Height, False);
 

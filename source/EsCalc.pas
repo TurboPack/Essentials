@@ -24,45 +24,20 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-{$G+} {286 Instructions}
-{$N+} {Numeric Coprocessor}
-
-{$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsCalc;
   {-calculator component}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Buttons, Classes, ClipBrd, Controls, ExtCtrls, Forms, Graphics,
+  Windows, Buttons, Classes, ClipBrd, Controls, ExtCtrls, Forms, Graphics,
   Menus, Messages, StdCtrls, SysUtils,
   EsBase, EsConst, EsData, EsUtil;
 
 const
-  {$IFDEF Win32}
   calcDefBorderStyle       = bsNone;
-  {$ELSE}
-  calcDefBorderStyle       = bsSingle;
-  {$ENDIF Win32}
   calcDefColor             = clBtnFace;                                {!!.01}
-  {$IFDEF Win32}
   calcDefHeight            = 140;
-  {$ELSE}
-  calcDefHeight            = 160;
-  {$ENDIF Win32}
   calcDefShowMemoryButtons = True;
   calcDefTabStop           = True;
   calcDefWidth             = 200;
@@ -320,11 +295,9 @@ type
   TEsCalculator = class(TEsCustomCalculator)
   published
     {properties}
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
    property Font;  {must be prior to "Colors"}
     property Align;
     property BorderStyle;
@@ -359,9 +332,7 @@ type
     property OnMouseDown;
     property OnMouseMove;
     property OnMouseUp;
-    {$IFDEF Win32}
     property OnStartDrag;
-    {$ENDIF Win32}
   end;
 
 
@@ -677,7 +648,7 @@ begin
 
   Inc(X, BW+M1);
   cButtons[ccDecimal].Position := Rect(X, Y, X+BW, Y+BH);
-  cButtons[ccDecimal].Caption := {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator;
+  cButtons[ccDecimal].Caption := FormatSettings.DecimalSeparator;
 
   Inc(X, BW+M1);
   cButtons[ccAdd].Position := Rect(X, Y, X+BW, Y+BH);
@@ -787,10 +758,8 @@ begin
   if (csLoading in ComponentState) or not HandleAllocated then
     Exit;
 
-  {$IFDEF Win32}
   if NewStyleControls and (FBorderStyle = bsSingle) then
     RecreateWnd;
-  {$ENDIF}
 
   Invalidate;
 end;
@@ -894,20 +863,16 @@ begin
     if cPopup then begin
       Style := WS_POPUP or WS_BORDER;
       WindowClass.Style := WindowClass.Style or CS_SAVEBITS;
-      {$IFDEF Win32}
       Ctl3D := False;
       if NewStyleControls then
         ExStyle := WS_EX_TOOLWINDOW or WS_EX_CLIENTEDGE;
-      {$ENDIF Win32}
     end;
   end;
 
-  {$IFDEF Win32}
   if NewStyleControls and Ctl3D and (FBorderStyle = bsSingle) then begin
     Params.Style := Params.Style and not WS_BORDER;
     Params.ExStyle := Params.ExStyle or WS_EX_CLIENTEDGE;
   end;
-  {$ENDIF}
 end;
 
 procedure TEsCustomCalculator.CreateWnd;
@@ -981,7 +946,7 @@ begin
     #8  : PressButton(ccBack);      {backspace}
     #27 : PressButton(ccClear);     {esc}
   else
-    if Key = {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator then
+    if Key = FormatSettings.DecimalSeparator then
       PressButton(ccDecimal);
   end;
 end;
@@ -1034,7 +999,7 @@ begin
     cClearAll;
     for I := 1 to Length(S) do begin
       C := S[I];
-      if CharInSet(C, ['0'..'9', {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator, '.', '+', '-', '*', '/', '=', '%']) then
+      if CharInSet(C, ['0'..'9', FormatSettings.DecimalSeparator, '.', '+', '-', '*', '/', '=', '%']) then
         KeyPress(C);
     end;
   end;
@@ -1095,7 +1060,7 @@ begin
             D := StrToFloat(cDisplayStr) * Sign;
             cOperand := D;
             if (D <> 0) or
-               (Pos({$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator, cDisplayStr) > 0) then begin
+               (Pos(FormatSettings.DecimalSeparator, cDisplayStr) > 0) then begin
               cPanel.Caption := cDisplayStr + ' ';
               cState := [csValid];
             end else begin
@@ -1109,9 +1074,9 @@ begin
         end;
       ccDecimal :
         {check if there is already a decimal separator in the string}
-        if Pos({$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator, cDisplayStr) = 0 then begin
+        if Pos(FormatSettings.DecimalSeparator, cDisplayStr) = 0 then begin
           try
-            cDisplayStr := cDisplayStr + {$IFDEF XE2}FormatSettings.{$ENDIF}DecimalSeparator;
+            cDisplayStr := cDisplayStr + FormatSettings.DecimalSeparator;
             D := StrToFloat(cDisplayStr);
             cPanel.Caption := cDisplayStr + ' ';
             cOperand := D;

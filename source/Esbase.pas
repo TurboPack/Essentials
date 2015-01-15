@@ -24,35 +24,12 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFDEF WIN32}                                                         {!!.02}
-  {$J+} {Writable constants}                                           {!!.02}
-{$ENDIF}                                                               {!!.02}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsBase;
   {-essentials' base class}
 
 interface
 
-{$IFDEF Win32}
-  {$R ESBASE.R32}
-{$ELSE}
-  {$R ESBASE.R16}
-{$ENDIF Win32}
+{$R ESBASE.R32}
 
 uses
   Windows,
@@ -91,11 +68,9 @@ type
 
   published
     {properties from TCustomLabel}
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
     property Alignment;
     property Caption;
     property Color;
@@ -185,10 +160,8 @@ type
   end;
 
 type
-  {$IFDEF NeedMouseWheel}                                              {!!.05}
   TMouseWheelEvent = procedure(Sender : TObject; Shift : TShiftState; Delta, XPos, YPos : Word)
     of object;
-  {$ENDIF}                                                             {!!.05}
 
   TEsBase = class(TCustomControl)
   protected {private}
@@ -197,9 +170,7 @@ type
     FEsLabel : TEsLabelInfo;
 
     {event variables}
-    {$IFDEF NeedMouseWheel}                                            {!!.05}
     FOnMouseWheel : TMouseWheelEvent;
-    {$ENDIF}                                                           {!!.05}
 
     {property methods}
     function GetAttachedLabel : TEsAttachedLabel;
@@ -220,10 +191,8 @@ type
       message ES_RECORDLABELPOSITION;
 
     {windows message methods}
-    {$IFDEF NeedMouseWheel}                                            {!!.05}
     procedure WMMouseWheel(var Msg : TMessage);
       message WM_MOUSEWHEEL;
-    {$ENDIF}                                                           {!!.05}
     {.Z-}
 
   protected
@@ -238,10 +207,8 @@ type
     procedure Notification(AComponent : TComponent; Operation: TOperation);
       override;
 
-    {$IFDEF NeedMouseWheel}                                            {!!.05}
     procedure DoOnMouseWheel(Shift : TShiftState; Delta, XPos, YPos : SmallInt);
       dynamic;
-    {$ENDIF}                                                           {!!.05}
     {.Z-}
     property EsLabelInfo : TEsLabelInfo
       read FEsLabel
@@ -265,15 +232,9 @@ type
       read GetAttachedLabel;
 
   published
-    {$IFDEF NeedMouseWheel}                                            {!!.05}
     property OnMouseWheel : TMouseWheelEvent
       read FOnMouseWheel
       write FOnMouseWheel;
-    {$ELSE}                                                            {!!.05}
-    {$IFNDEF Windows}                                                  {!!.05}
-    property OnMouseWheel;                                             {!!.05}
-    {$ENDIF}                                                           {!!.05}
-    {$ENDIF}                                                           {!!.05}
   end;
 
 
@@ -415,13 +376,11 @@ begin
   inherited Destroy;
 end;
 
-{$IFDEF NeedMouseWheel}                                                {!!.05}
 procedure TEsBase.DoOnMouseWheel(Shift : TShiftState; Delta, XPos, YPos : SmallInt);
 begin
   if Assigned(FOnMouseWheel) then
     FOnMouseWheel(Self, Shift, Delta, XPos, YPos);
 end;
-{$ENDIF}                                                               {!!.05}
 
 procedure TEsBase.ESAssignLabel(var Msg : TMessage);
 begin
@@ -554,7 +513,6 @@ procedure TEsBase.SetVersion(const Value : string);
 begin
 end;
 
-{$IFDEF NeedMouseWheel}                                        {!!.05}
 procedure TEsBase.WMMouseWheel(var Msg : TMessage);
 begin
   inherited;
@@ -564,7 +522,6 @@ begin
                    HIWORD(wParam) {zDelta},
                    LOWORD(lParam) {xPos},   HIWORD(lParam) {yPos});
 end;
-{$ENDIF}                                                       {!!.05}
 
 initialization
   {register the attached label class}

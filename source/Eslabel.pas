@@ -24,29 +24,13 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsLabel;
   {-label component}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Classes, Controls, Graphics, Messages, StdCtrls, SysUtils,
+  Windows, Classes, Controls, Graphics, Messages, StdCtrls, SysUtils,
   EsConst, EsData, EsUtil;
 
 type
@@ -256,9 +240,7 @@ type
     destructor Destroy;
       override;
 
-    {$IFDEF MSWINDOWS}
     procedure PaintTo(DC : TEshDC; CR : TRect; Flags : Word);
-    {$ENDIF}
 
     property AutoSize;
     {.Z-}
@@ -266,11 +248,9 @@ type
 
   TEsLabel = class(TEsCustomLabel)
   published
-    {$IFDEF VERSION4}                                                {!!.06}
     property Anchors;                                                {!!.06}
     property Constraints;                                            {!!.06}
     property DragKind;                                               {!!.06}
-    {$ENDIF}                                                         {!!.06}
    {properties}
     property Align;
     property Alignment;
@@ -741,7 +721,6 @@ begin
   end;
 end;
 
-{$IFDEF MSWINDOWS}
 procedure TEsCustomLabel.PaintTo(DC : TEshDC; CR : TRect; Flags : Word);
 begin
   Canvas.Handle := DC;
@@ -758,7 +737,6 @@ begin
     Canvas.Handle := 0;
   end;
 end;
-{$ENDIF}
 
 procedure TEsCustomLabel.SetAppearance(Value : TEsAppearance);
 begin

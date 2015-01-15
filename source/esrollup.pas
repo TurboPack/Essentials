@@ -24,30 +24,12 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-{$G+} {286 Instructions}
-{$N+} {Numeric Coprocessor}
-
-{$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsRollUp;
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Classes, Forms, Messages, MMSystem,
-  EsConst, EsData;
+  Windows, Classes, Forms, Messages, MMSystem, EsConst, EsData;
 
 const
   ruDefAnimate      = True;
@@ -167,11 +149,7 @@ begin
   inherited Create(AOwner);
 
   {create instance of our window procedure}
-{$IFDEF VER140}
   ruNewWndProc := Classes.MakeObjectInstance(ruWndProc);             {!!.09}
-{$ELSE}
-  ruNewWndProc := MakeObjectInstance(ruWndProc);
-{$ENDIF}
 
   FAnimate      := ruDefAnimate;
   FAnimateSpeed := ruDefAnimateSpeed;
@@ -185,11 +163,7 @@ begin
   {restore old wnd proc}
   SetHookForm(False);
 
-{$IFDEF VER140}
   Classes.FreeObjectInstance(ruNewWndProc);                          {!!.09}
-{$ELSE}
-  FreeObjectInstance(ruNewWndProc);
-{$ENDIF}
 
   inherited Destroy;
 end;
