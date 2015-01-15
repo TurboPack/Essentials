@@ -338,6 +338,8 @@ type
 
 implementation
 
+uses
+  Types;
 
 {*** TEsCalcColors ***}
 

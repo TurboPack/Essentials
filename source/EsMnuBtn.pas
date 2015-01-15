@@ -174,9 +174,7 @@ type
 
 implementation
 uses
-  Forms;
-
-
+  Types, Forms;
 
 procedure TEsCustomMenuButton.cbDrawFocusRect;
 var

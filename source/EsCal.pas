@@ -369,6 +369,8 @@ type
 
 implementation
 
+uses
+  Types;
 
 {*** TEsCalColors ***}
 

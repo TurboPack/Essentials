@@ -241,6 +241,8 @@ type
 
 implementation
 
+uses
+  Types;
 
 {*** TEsCustomDateEdit ***}
 

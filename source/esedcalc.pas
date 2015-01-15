@@ -188,6 +188,8 @@ type
 
 implementation
 
+uses
+  Types;
 
 {*** TEsCustomNumberEdit ***}
 

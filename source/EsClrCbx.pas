@@ -169,6 +169,8 @@ type
 
 implementation
 
+uses
+  UITypes;
 
 procedure TEsCustomColorComboBox.CalculateBoxWidth;
 var
@@ -315,9 +317,9 @@ begin
 end;
 
 procedure TEsCustomColorComboBox.ESPositionLabel(var Msg : TMessage);
-const
-  DX : Integer = 0;
-  DY : Integer = 0;
+var
+  DX: Integer;
+  DY: Integer;
 begin
   if FEsLabel.Visible and Assigned(FEsLabel.ALabel) and (FEsLabel.ALabel.Parent <> nil) and
      not (csLoading in ComponentState) then begin
