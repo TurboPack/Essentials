@@ -24,43 +24,15 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsReg;
   {-registration unit for the Essentials components}
 
-{$IFDEF Win32}
-  {$IFNDEF Ver93}                                                      {!!.04}
-    {$R ESREG.R32}
-  {$ENDIF}
-{$ELSE}
-  {$R ESREG.R16}
-{$ENDIF Win32}
+{$R ESREG.R32}
 
 interface
 
 uses
-{$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-{$IFDEF AboveD6}
-  DesignIntf,                                                        {!!.09}
-  DesignEditors,                                                     {!!.09}
-{$ELSE}
-  dsgnintf,
-{$ENDIF}
-  Classes, Controls, Graphics, TypInfo,  Buttons,
+  Windows, DesignIntf, DesignEditors, Classes, Controls, Graphics, TypInfo, Buttons,
   EsBase, EsBase0, EsLabel, EsGrad, EsRollUp, EsCalc,
   EsEdCalc, EsCal, EsEdCal, EsClrCbx, EsMnuBtn, EsEdPop,
   EsTile, EsMarque, EsLabel0, EsDir, EsAbout0, EsWebPE;

@@ -24,35 +24,15 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsWebPE;
   {-component editor to provide web access}
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Dialogs,
-{$IFDEF AboveD6}
+  Windows, Dialogs,
   DesignIntf,                                                        {!!.09}
   DesignEditors,                                                     {!!.09}
-{$ELSE}
-  dsgnintf,
-{$ENDIF}
   Classes, ShellApi,
   EsData;
 

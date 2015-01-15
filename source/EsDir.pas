@@ -23,36 +23,15 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsDir;
   {-direction picker component}
 
 interface
 
-{$IFDEF Win32}
-  {$R ESDIR.R32}
-{$ELSE}
-  {$R ESDIR.R16}
-{$ENDIF Win32}
+{$R ESDIR.R32}
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Classes, Controls, Graphics, Messages,
-  EsData, EsUtil;
+  Windows, Classes, Controls, Graphics, Messages, EsData, EsUtil;
 
 type
   TEsCustomDirectionPicker = class(TGraphicControl)

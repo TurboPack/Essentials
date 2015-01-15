@@ -24,21 +24,6 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsLabel0;
 
 interface
@@ -46,12 +31,8 @@ interface
 uses
   SysUtils, WinTypes, WinProcs, Messages, Classes, Graphics, Controls,
   Forms, Dialogs, StdCtrls, EsLabel, ExtCtrls,
-{$IFDEF AboveD6}
   DesignIntf,                                                        {!!.09}
   DesignEditors,                                                     {!!.09}
-{$ELSE}
-  dsgnintf,
-{$ENDIF}
   Menus, IniFiles,
   EsBase, EsData, EsMnuBtn, EsClrCbx, EsDir, EsWebPE, TypInfo;
 
@@ -141,7 +122,7 @@ implementation
 
 uses EsLabel1;
 
-{$R *.DFM}
+{$R *.dfm}
 
 const
   IniFileName = 'ESSENCE.INI';
@@ -370,17 +351,10 @@ begin
   ShadowDirectionDp.Parent := ShadowDirectionLbl.Parent;
 
   {initialize appearance and color scheme comboboxes using rtti}
-  {$IFDEF WIN32}
   for A := Low(TEsAppearance) to High(TEsAppearance) do
     AppearanceCb.Items.Add(GetEnumName(TypeInfo(TEsAppearance), Ord(A)));
   for C := Low(TEsColorScheme) to High(TEsColorScheme) do
     ColorSchemeCb.Items.Add(GetEnumName(TypeInfo(TEsColorScheme), Ord(C)));
-  {$ELSE}
-  for A := Low(TEsAppearance) to High(TEsAppearance) do
-    AppearanceCb.Items.Add(GetEnumName(TypeInfo(TEsAppearance), Ord(A))^);
-  for C := Low(TEsColorScheme) to High(TEsColorScheme) do
-    ColorSchemeCb.Items.Add(GetEnumName(TypeInfo(TEsColorScheme), Ord(C))^);
-  {$ENDIF WIN32}
 end;
 
 procedure TEsLabelFrm.SaveAsBtnClick(Sender: TObject);
@@ -445,9 +419,6 @@ end;
 procedure TEsLabelFrm.DeleteScheme(const S : string);
 var
   Ini : TIniFile;
-  {$IFNDEF Win32}
-  Buf : array[0..255] of Char;
-  {$ENDIF}
 begin
   {delete the scheme entry from the ini file}
   Ini := TIniFile.Create(IniFileName);
@@ -455,12 +426,7 @@ begin
     {delete the section}
     Ini.EraseSection(S);
     {delete the scheme name}
-    {$IFDEF Win32}
     Ini.DeleteKey('Schemes', S);
-    {$ELSE}
-    StrPLCopy(Buf, S, SizeOf(Buf)-1);
-    WritePrivateProfileString('Schemes', Buf, nil, IniFileName);
-    {$ENDIF}
   finally
     Ini.Free;
   end;

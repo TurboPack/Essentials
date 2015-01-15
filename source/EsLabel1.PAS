@@ -24,28 +24,12 @@
  *
  * ***** END LICENSE BLOCK ***** *)
 
-{$I ES.INC}
-
-{$B-} {Complete Boolean Evaluation}
-{$I+} {Input/Output-Checking}
-{$P+} {Open Parameters}
-{$T-} {Typed @ Operator}
-{$W-} {Windows Stack Frame}
-{$X+} {Extended Syntax}
-
-{$IFNDEF Win32}
-  {$G+} {286 Instructions}
-  {$N+} {Numeric Coprocessor}
-  {$C MOVEABLE,DEMANDLOAD,DISCARDABLE}
-{$ENDIF}
-
 unit EsLabel1;
 
 interface
 
 uses
-  {$IFDEF Win32} Windows, {$ELSE} WinTypes, WinProcs, {$ENDIF}
-  Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls;
 
 type
@@ -63,7 +47,7 @@ type
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 procedure TSaveSchemeFrm.FormCreate(Sender: TObject);
 begin
