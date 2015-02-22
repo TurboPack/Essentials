@@ -1,0 +1,72 @@
+TurboPack Essentials
+
+
+Table of contents
+
+1.  Introduction
+2.  Package names
+3.  Installation
+4.  License
+
+==============================================
+
+
+1. Introduction
+
+
+Essentials contains 13 native VCL controls for Embarcadero Delphi &
+C++Builder. The controls include drop-down calendars & calculators,
+roll-up dialogs, 3-D labels, tiled backgrounds, scrolling messages,
+menu buttons, and more.
+
+This is a source-only release of TurboPack Essentials. It includes
+designtime and runtime packages for Delphi C++Builder. It supports WIn32 and Win64.
+
+==============================================
+
+2. Package names
+
+
+TurboPack Essentials package names have the following form:
+
+EssentialsDR.bpl (Delphi Runtime)
+EssentialsDBDR.bpl (Delphi data aware Runtime)
+EssentialsDD.bpl (Delphi Runtime)
+
+EssentialsCR.bpl (C++Builder Runtime)
+EssentialsDBCR.bpl (C++Builder data aware Runtime)
+EssentialsCD.bpl (C++Builder Runtime)
+
+The runtime package contains the core functionality of the product and
+is not installed into the IDE. The designtime package references the
+runtime package, registers the components, and contains property
+editors used in the IDE.
+
+==============================================
+
+3. Installation
+
+
+To install TurboPack Essentials into your IDE, take the following
+steps:
+
+  1. Unzip the release files into a directory (e.g., d:\essence).
+
+  2. Start RAD Studio.
+
+  3. Add the source subdirectory (e.g., d:\essence\source) to the
+     IDE's library path. For CBuilder, add the hpp subdirectory
+     (e.g., d:\essence\source\hpp) to the IDE's system include path.
+
+  4. Open & compile the runtime package specific to the IDE being
+     used.
+
+  5. Open & install the designtime package specific to the IDE being
+     used. The IDE should notify you the components have been
+     installed.
+
+=====================================
+
+4. License
+
+Mozilla Public License 1.1 (MPL 1.1)
