@@ -559,7 +559,6 @@ procedure TEsCustomDateEdit.SetDateText(Value : string);
 var
   Field      : Integer;
   I1         : Integer;
-  I2         : Integer;
   Error      : Integer;
   ThisYear   : Word;
   ThisMonth  : Word;
@@ -572,6 +571,7 @@ var
   StringList : TStringList;
   FieldOrder : string;
   S          : string;
+  Separator  : Char;
 begin
   if Assigned(FOnGetDate) then
     FOnGetDate(Self, Value);
@@ -595,18 +595,16 @@ begin
     StringList := TStringList.Create;
     try
       {parse the string into subfields using a string list to hold the parts}
-      I1 := 1;
-      while (I1 <= Length(Value)) and CharInSet(Value[I1], ['0'..'9', 'A'..'Z']) do
-        Inc(I1);
-      while I1 <= Length(Value) do begin
-        I2 := I1;
-        while (I2 <= Length(Value)) and CharInSet(Value[I2], ['0'..'9', 'A'..'Z']) do
-          Inc(I2);
-        StringList.Add(Copy(Value, I1, I2-I1));
-        while (I2 <= Length(Value)) and not CharInSet(Value[I2], ['0'..'9', 'A'..'Z']) do
-          Inc(I2);
-        I1 := I2;
+      for Separator in Value do
+      begin
+        if not CharInSet(Separator, ['0'..'9', 'A'..'Z']) then
+        begin
+          StringList.Delimiter := Separator;
+          Break;
+        end;
       end;
+
+      StringList.DelimitedText := Value;
 
       case DateOrder of
         doMDY : FieldOrder := 'MDY';
