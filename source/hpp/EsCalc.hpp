@@ -74,6 +74,7 @@ private:
 	System::Uitypes::TColor __fastcall GetColor(int Index);
 	void __fastcall SetColor(int Index, System::Uitypes::TColor Value);
 	void __fastcall SetColorScheme(TEsCalcColorScheme Value);
+	System::Uitypes::TColor __fastcall GetDisplayText(void);
 	void __fastcall SetDisplayText(System::Uitypes::TColor Value);
 	
 public:
@@ -88,7 +89,7 @@ __published:
 	__property TEsCalcColorScheme ColorScheme = {read=FColorScheme, write=SetColorScheme, nodefault};
 	__property System::Uitypes::TColor DisabledMemoryButtons = {read=GetColor, write=SetColor, index=0, nodefault};
 	__property System::Uitypes::TColor Display = {read=GetColor, write=SetColor, index=1, nodefault};
-	__property System::Uitypes::TColor DisplayText = {read=FCalcColors[2], write=SetDisplayText, nodefault};
+	__property System::Uitypes::TColor DisplayText = {read=GetDisplayText, write=SetDisplayText, nodefault};
 	__property System::Uitypes::TColor EditButtons = {read=GetColor, write=SetColor, index=3, nodefault};
 	__property System::Uitypes::TColor FunctionButtons = {read=GetColor, write=SetColor, index=4, nodefault};
 	__property System::Uitypes::TColor MemoryButtons = {read=GetColor, write=SetColor, index=5, nodefault};

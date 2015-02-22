@@ -92,6 +92,7 @@ type
     function GetColor(Index : Integer) : TColor;
     procedure SetColor(Index : Integer; Value : TColor);
     procedure SetColorScheme(Value : TEsCalcColorScheme);
+    function GetDisplayText: TColor;
     procedure SetDisplayText(Value : TColor);
     {.Z-}
   public
@@ -124,7 +125,7 @@ type
       write SetColor;
 
     property DisplayText : TColor
-      read FCalcColors[2]
+      read GetDisplayText
       write SetDisplayText
       nodefault;
 
@@ -399,6 +400,11 @@ begin
       SettingScheme := False;
     end;
   end;
+end;
+
+function TEsCalcColors.GetDisplayText: TColor;
+begin
+  Result := FCalcColors[2];
 end;
 
 procedure TEsCalcColors.SetDisplayText(Value : TColor);
