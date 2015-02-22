@@ -108,7 +108,7 @@ type
   PResourceRec = ^TResourceRec;
   TResourceRec = record
     id : array[0..3] of ansichar;
-    count : LongInt;
+    count : Integer;
     index : TIndexArray;
   end;
 

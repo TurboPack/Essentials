@@ -51,10 +51,10 @@ type
 
     {property methods}
     function GetAsFloat : Double;
-    function GetAsInteger : LongInt;
+    function GetAsInteger : Integer;
     function GetAsString : string;
     procedure SetAsFloat(Value : Double);
-    procedure SetAsInteger(Value : LongInt);
+    procedure SetAsInteger(Value : Integer);
     procedure SetAsString(const Value : string);
 
     {property methods}
@@ -118,7 +118,7 @@ type
       override;
     {.Z-}
 
-    property AsInteger : LongInt
+    property AsInteger : Integer
       read GetAsInteger
       write SetAsInteger;
 
@@ -251,7 +251,7 @@ begin
   end;                                                                {!!.10}
 end;
 
-function TEsCustomNumberEdit.GetAsInteger : LongInt;
+function TEsCustomNumberEdit.GetAsInteger : Integer;
 begin
   Result := Trunc(GetAsFloat);
 end;
@@ -467,7 +467,7 @@ begin
   Text := FloatToStr(Value);
 end;
 
-procedure TEsCustomNumberEdit.SetAsInteger(Value : LongInt);
+procedure TEsCustomNumberEdit.SetAsInteger(Value : Integer);
 begin
   Text := IntToStr(Value);
 end;

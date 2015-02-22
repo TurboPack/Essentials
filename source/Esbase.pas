@@ -324,7 +324,7 @@ begin
   if Assigned(PF) then begin
     for I := 0 to Pred(PF.ComponentCount) do begin
       if PF.Components[I] = FEsControl then begin
-        SendMessage(FEsControl.Handle, ES_ASSIGNLABEL, 0, LongInt(Self));
+        SendMessage(FEsControl.Handle, ES_ASSIGNLABEL, 0, NativeInt(Self));
         PostMessage(FEsControl.Handle, ES_RECORDLABELPOSITION, 0, 0);
         Break;
       end;

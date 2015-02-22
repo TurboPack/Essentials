@@ -234,9 +234,9 @@ begin
     if not (csDesigning in ComponentState) then begin
       if Value then begin
         ruPrevWndProc:= Pointer(
-          SetWindowLong(TForm(Owner).Handle, GWL_WNDPROC, LongInt(ruNewWndProc)))
+          SetWindowLong(TForm(Owner).Handle, GWL_WNDPROC, NativeInt(ruNewWndProc)))
       end else if Assigned(ruPrevWndProc) then begin
-        SetWindowLong(TForm(Owner).Handle, GWL_WNDPROC, LongInt(ruPrevWndProc));
+        SetWindowLong(TForm(Owner).Handle, GWL_WNDPROC, NativeInt(ruPrevWndProc));
         ruPrevWndProc := nil;
       end;
     end;
