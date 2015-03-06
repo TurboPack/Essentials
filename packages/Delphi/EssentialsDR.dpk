@@ -51,7 +51,7 @@ package EssentialsDR;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'TurboPower Essentials Delphi Runtime package'}
+{$DESCRIPTION 'TurboPack Essentials Delphi Runtime package'}
 {$RUNONLY}
 {$IMPLICITBUILD OFF}
 

@@ -51,7 +51,7 @@ package EssentialsDBDR;
 {$IMAGEBASE $400000}
 {$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'TurboPower Essentials Delphi (db) Runtime package'}
+{$DESCRIPTION 'TurboPack Essentials Delphi DB Runtime package'}
 {$RUNONLY}
 {$IMPLICITBUILD OFF}
 
