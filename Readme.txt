@@ -56,7 +56,7 @@ steps:
 
   3. Add the source subdirectory (e.g., d:\essence\source) to the
      IDE's library path. For CBuilder, add the hpp subdirectory
-     (e.g., d:\essence\source\hpp) to the IDE's system include path.
+     (e.g., d:\essence\source\hpp\Win32\Release) to the IDE's system include path.
 
   4. Open & compile the runtime package specific to the IDE being
      used.
