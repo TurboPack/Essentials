@@ -52,6 +52,7 @@ package EssentialsDBDR;
 {$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'TurboPack Essentials Delphi DB Runtime package'}
+{$LIBSUFFIX '220'}
 {$RUNONLY}
 {$IMPLICITBUILD OFF}
 
