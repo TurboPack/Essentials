@@ -52,7 +52,7 @@ package EssentialsDD;
 {$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'TurboPack Essentials Delphi Designtime package'}
-{$LIBSUFFIX '220'}
+{$LIBSUFFIX '230'}
 {$DESIGNONLY}
 {$IMPLICITBUILD OFF}
 

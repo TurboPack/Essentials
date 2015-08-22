@@ -2,7 +2,7 @@
 // Copyright (c) 1995, 2015 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsData.pas' rev: 29.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsData.pas' rev: 30.00 (Windows)
 
 #ifndef EsdataHPP
 #define EsdataHPP
@@ -29,6 +29,8 @@ typedef HDC TEsHdc;
 #pragma pack(push,1)
 struct DECLSPEC_DRECORD TRGBMap
 {
+	
+public:
 	union
 	{
 		struct 

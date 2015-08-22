@@ -2,7 +2,7 @@
 // Copyright (c) 1995, 2015 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EssentialsDD.dpk' rev: 29.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EssentialsDD.dpk' rev: 30.00 (Windows)
 
 #ifndef EssentialsddHPP
 #define EssentialsddHPP
@@ -22,6 +22,7 @@
 #include <EsAbout0.hpp>
 #include <EsWebPE.hpp>
 #include <Winapi.Windows.hpp>	// (rtl)
+#include <System.Character.hpp>	// (rtl)
 #include <System.Internal.ExcUtils.hpp>	// (rtl)
 #include <System.SysUtils.hpp>	// (rtl)
 #include <System.VarUtils.hpp>	// (rtl)
@@ -55,6 +56,7 @@
 #include <Winapi.FlatSB.hpp>	// (rtl)
 #include <Vcl.Forms.hpp>	// (vcl)
 #include <Vcl.Menus.hpp>	// (vcl)
+#include <Winapi.MsCTF.hpp>	// (rtl)
 #include <Vcl.Controls.hpp>	// (vcl)
 #include <IDEMessages.hpp>	// (designide)
 #include <Vcl.CaptionedDockTree.hpp>	// (vcl)
