@@ -1294,6 +1294,9 @@ end;
 
 procedure TEsCustomCalculator.WMGetTextLength(var Msg : TWMGetTextLength);
 begin
+  if cPanel = nil then
+    Exit;
+
   if not cPanel.HandleAllocated then
     Exit;
 
