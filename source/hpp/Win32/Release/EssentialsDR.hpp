@@ -2,7 +2,7 @@
 // Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EssentialsDR.dpk' rev: 31.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EssentialsDR.dpk' rev: 32.00 (Windows)
 
 #ifndef EssentialsdrHPP
 #define EssentialsdrHPP
@@ -70,6 +70,11 @@
 #include <Winapi.MsCTF.hpp>	// (rtl)
 #include <Vcl.Controls.hpp>	// (vcl)
 #include <Vcl.Buttons.hpp>	// (vcl)
+// SO_SFX: 250
+// PRG_EXT: .bpl
+// BPI_DIR: C:\Users\Public\Documents\Embarcadero\Studio\19.0\Dcp
+// OBJ_DIR: C:\Users\Public\Documents\Embarcadero\Studio\19.0\Dcp
+// OBJ_EXT: .obj
 
 //-- user supplied -----------------------------------------------------------
 
