@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsWebPE.pas' rev: 32.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsWebPE.pas' rev: 33.00 (Windows)
 
 #ifndef EswebpeHPP
 #define EswebpeHPP
@@ -37,12 +37,12 @@ class PASCALIMPLEMENTATION TEsWebEditor : public Designeditors::TDefaultEditor
 public:
 	virtual void __fastcall ExecuteVerb(int Index);
 	virtual System::UnicodeString __fastcall GetVerb(int Index);
-	virtual int __fastcall GetVerbCount(void);
+	virtual int __fastcall GetVerbCount();
 public:
 	/* TComponentEditor.Create */ inline __fastcall virtual TEsWebEditor(System::Classes::TComponent* AComponent, Designintf::_di_IDesigner ADesigner) : Designeditors::TDefaultEditor(AComponent, ADesigner) { }
 	
 public:
-	/* TObject.Destroy */ inline __fastcall virtual ~TEsWebEditor(void) { }
+	/* TObject.Destroy */ inline __fastcall virtual ~TEsWebEditor() { }
 	
 };
 

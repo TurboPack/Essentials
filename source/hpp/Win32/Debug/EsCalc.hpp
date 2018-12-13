@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsCalc.pas' rev: 31.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsCalc.pas' rev: 33.00 (Windows)
 
 #ifndef EscalcHPP
 #define EscalcHPP
@@ -75,19 +75,19 @@ private:
 	bool FUpdating;
 	System::Classes::TNotifyEvent FOnChange;
 	bool SettingScheme;
-	void __fastcall DoOnChange(void);
+	void __fastcall DoOnChange();
 	System::Uitypes::TColor __fastcall GetColor(int Index);
 	void __fastcall SetColor(int Index, System::Uitypes::TColor Value);
 	void __fastcall SetColorScheme(TEsCalcColorScheme Value);
-	System::Uitypes::TColor __fastcall GetDisplayText(void);
+	System::Uitypes::TColor __fastcall GetDisplayText();
 	void __fastcall SetDisplayText(System::Uitypes::TColor Value);
 	
 public:
 	TEsCalcColorArray FCalcColors;
 	TEsCalcColorScheme FColorScheme;
 	virtual void __fastcall Assign(System::Classes::TPersistent* Source);
-	void __fastcall BeginUpdate(void);
-	void __fastcall EndUpdate(void);
+	void __fastcall BeginUpdate();
+	void __fastcall EndUpdate();
 	__property System::Classes::TNotifyEvent OnChange = {read=FOnChange, write=FOnChange};
 	
 __published:
@@ -101,10 +101,10 @@ __published:
 	__property System::Uitypes::TColor NumberButtons = {read=GetColor, write=SetColor, index=6, nodefault};
 	__property System::Uitypes::TColor OperatorButtons = {read=GetColor, write=SetColor, index=7, nodefault};
 public:
-	/* TPersistent.Destroy */ inline __fastcall virtual ~TEsCalcColors(void) { }
+	/* TPersistent.Destroy */ inline __fastcall virtual ~TEsCalcColors() { }
 	
 public:
-	/* TObject.Create */ inline __fastcall TEsCalcColors(void) : System::Classes::TPersistent() { }
+	/* TObject.Create */ inline __fastcall TEsCalcColors() : System::Classes::TPersistent() { }
 	
 };
 
@@ -114,12 +114,12 @@ class PASCALIMPLEMENTATION TEsCalcPanel : public Vcl::Extctrls::TPanel
 	typedef Vcl::Extctrls::TPanel inherited;
 	
 protected:
-	DYNAMIC void __fastcall Click(void);
+	DYNAMIC void __fastcall Click();
 public:
 	/* TCustomPanel.Create */ inline __fastcall virtual TEsCalcPanel(System::Classes::TComponent* AOwner) : Vcl::Extctrls::TPanel(AOwner) { }
 	
 public:
-	/* TCustomControl.Destroy */ inline __fastcall virtual ~TEsCalcPanel(void) { }
+	/* TCustomControl.Destroy */ inline __fastcall virtual ~TEsCalcPanel() { }
 	
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsCalcPanel(HWND ParentWindow) : Vcl::Extctrls::TPanel(ParentWindow) { }
@@ -150,16 +150,16 @@ protected:
 	TEsCalcPanel* cPanel;
 	System::Set<TEsCalcState, TEsCalcState::csValid, TEsCalcState::csClear> cState;
 	bool cPopup;
-	void __fastcall cAdjustHeight(void);
-	void __fastcall cCalculateLook(void);
-	void __fastcall cClearAll(void);
+	void __fastcall cAdjustHeight();
+	void __fastcall cCalculateLook();
+	void __fastcall cClearAll();
 	void __fastcall cColorChange(System::TObject* Sender);
-	void __fastcall cDisplayError(void);
+	void __fastcall cDisplayError();
 	void __fastcall cDisplayValue(const System::Extended Value);
 	void __fastcall cDrawCalcButton(const TEsButtonInfo &Button, bool Pressed);
-	void __fastcall cDrawFocusState(void);
-	void __fastcall cEvaluate(void);
-	void __fastcall cInvalidateIndicator(void);
+	void __fastcall cDrawFocusState();
+	void __fastcall cEvaluate();
+	void __fastcall cInvalidateIndicator();
 	void __fastcall SetBorderStyle(Vcl::Forms::TBorderStyle Value);
 	void __fastcall SetShowMemoryButtons(bool Value);
 	HIDESBASE MESSAGE void __fastcall CMCtl3DChanged(Winapi::Messages::TMessage &Msg);
@@ -172,12 +172,12 @@ protected:
 	HIDESBASE MESSAGE void __fastcall WMKeyDown(Winapi::Messages::TWMKey &Msg);
 	MESSAGE void __fastcall WMSetText(Winapi::Messages::TWMSetText &Msg);
 	virtual void __fastcall CreateParams(Vcl::Controls::TCreateParams &Params);
-	virtual void __fastcall CreateWnd(void);
+	virtual void __fastcall CreateWnd();
 	DYNAMIC void __fastcall KeyDown(System::Word &Key, System::Classes::TShiftState Shift);
 	DYNAMIC void __fastcall KeyPress(System::WideChar &Key);
 	DYNAMIC void __fastcall MouseDown(System::Uitypes::TMouseButton Button, System::Classes::TShiftState Shift, int X, int Y);
 	DYNAMIC void __fastcall MouseUp(System::Uitypes::TMouseButton Button, System::Classes::TShiftState Shift, int X, int Y);
-	virtual void __fastcall Paint(void);
+	virtual void __fastcall Paint();
 	__property Vcl::Forms::TBorderStyle BorderStyle = {read=FBorderStyle, write=SetBorderStyle, default=0};
 	__property bool ShowMemoryButtons = {read=FShowMemoryButtons, write=SetShowMemoryButtons, default=1};
 	__property TButtonPressedEvent OnButtonPressed = {read=FOnButtonPressed, write=FOnButtonPressed};
@@ -185,10 +185,10 @@ protected:
 public:
 	__fastcall virtual TEsCustomCalculator(System::Classes::TComponent* AOwner);
 	__fastcall virtual TEsCustomCalculator(System::Classes::TComponent* AOwner, bool AsPopup);
-	__fastcall virtual ~TEsCustomCalculator(void);
+	__fastcall virtual ~TEsCustomCalculator();
 	virtual void __fastcall SetBounds(int ALeft, int ATop, int AWidth, int AHeight);
-	void __fastcall CopyToClipboard(void);
-	void __fastcall PasteFromClipboard(void);
+	void __fastcall CopyToClipboard();
+	void __fastcall PasteFromClipboard();
 	void __fastcall PressButton(TEsCalculatorButton Button);
 	__property TEsCalcColors* Colors = {read=FColors, write=FColors};
 	__property System::Extended Memory = {read=cMemory, write=cMemory};
@@ -244,7 +244,7 @@ __published:
 public:
 	/* TEsCustomCalculator.Create */ inline __fastcall virtual TEsCalculator(System::Classes::TComponent* AOwner) : TEsCustomCalculator(AOwner) { }
 	/* TEsCustomCalculator.CreateEx */ inline __fastcall virtual TEsCalculator(System::Classes::TComponent* AOwner, bool AsPopup) : TEsCustomCalculator(AOwner, AsPopup) { }
-	/* TEsCustomCalculator.Destroy */ inline __fastcall virtual ~TEsCalculator(void) { }
+	/* TEsCustomCalculator.Destroy */ inline __fastcall virtual ~TEsCalculator() { }
 	
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsCalculator(HWND ParentWindow) : TEsCustomCalculator(ParentWindow) { }

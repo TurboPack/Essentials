@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsBase0.pas' rev: 32.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsBase0.pas' rev: 33.00 (Windows)
 
 #ifndef Esbase0HPP
 #define Esbase0HPP
@@ -30,10 +30,10 @@ class PASCALIMPLEMENTATION TEsControlProperty : public Designeditors::TClassProp
 	typedef Designeditors::TClassProperty inherited;
 	
 public:
-	virtual Designintf::TPropertyAttributes __fastcall GetAttributes(void);
+	virtual Designintf::TPropertyAttributes __fastcall GetAttributes();
 public:
 	/* TPropertyEditor.Create */ inline __fastcall virtual TEsControlProperty(const Designintf::_di_IDesigner ADesigner, int APropCount) : Designeditors::TClassProperty(ADesigner, APropCount) { }
-	/* TPropertyEditor.Destroy */ inline __fastcall virtual ~TEsControlProperty(void) { }
+	/* TPropertyEditor.Destroy */ inline __fastcall virtual ~TEsControlProperty() { }
 	
 };
 

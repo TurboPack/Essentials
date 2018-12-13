@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsClrCbx.pas' rev: 31.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsClrCbx.pas' rev: 33.00 (Windows)
 
 #ifndef EsclrcbxHPP
 #define EsclrcbxHPP
@@ -45,23 +45,23 @@ protected:
 	Esbase::TEsLabelInfo* FEsLabel;
 	bool FShowColorNames;
 	int BoxWidth;
-	Esbase::TEsAttachedLabel* __fastcall GetAttachedLabel(void);
-	System::Uitypes::TColor __fastcall GetSelectedColor(void);
-	System::UnicodeString __fastcall GetVersion(void);
+	Esbase::TEsAttachedLabel* __fastcall GetAttachedLabel();
+	System::Uitypes::TColor __fastcall GetSelectedColor();
+	System::UnicodeString __fastcall GetVersion();
 	void __fastcall SetSelectedColor(System::Uitypes::TColor Value);
 	void __fastcall SetShowColorNames(bool Value);
 	void __fastcall SetVersion(const System::UnicodeString Value);
-	void __fastcall CalculateBoxWidth(void);
+	void __fastcall CalculateBoxWidth();
 	void __fastcall LabelChange(System::TObject* Sender);
 	void __fastcall LabelAttach(System::TObject* Sender, bool Value);
-	void __fastcall PositionLabel(void);
+	void __fastcall PositionLabel();
 	HIDESBASE MESSAGE void __fastcall CMFontChanged(Winapi::Messages::TMessage &Message);
 	MESSAGE void __fastcall ESAssignLabel(Winapi::Messages::TMessage &Msg);
 	MESSAGE void __fastcall ESPositionLabel(Winapi::Messages::TMessage &Msg);
 	MESSAGE void __fastcall ESRecordLabelPosition(Winapi::Messages::TMessage &Msg);
 	Esbase::TEsLabelPosition DefaultLabelPosition;
 	virtual void __fastcall CreateParams(Vcl::Controls::TCreateParams &Params);
-	virtual void __fastcall CreateWnd(void);
+	virtual void __fastcall CreateWnd();
 	virtual void __fastcall Notification(System::Classes::TComponent* AComponent, System::Classes::TOperation Operation);
 	__property Esbase::TEsLabelInfo* EsLabelInfo = {read=FEsLabel, write=FEsLabel};
 	__property System::Uitypes::TColor SelectedColor = {read=GetSelectedColor, write=SetSelectedColor, stored=false, nodefault};
@@ -70,7 +70,7 @@ protected:
 	
 public:
 	__fastcall virtual TEsCustomColorComboBox(System::Classes::TComponent* AOwner);
-	__fastcall virtual ~TEsCustomColorComboBox(void);
+	__fastcall virtual ~TEsCustomColorComboBox();
 	virtual void __fastcall DrawItem(int Index, const System::Types::TRect &Rect, Winapi::Windows::TOwnerDrawState State);
 	virtual void __fastcall SetBounds(int ALeft, int ATop, int AWidth, int AHeight);
 	__property Esbase::TEsAttachedLabel* AtachedLabel = {read=GetAttachedLabel};
@@ -124,7 +124,7 @@ __published:
 	__property OnStartDrag;
 public:
 	/* TEsCustomColorComboBox.Create */ inline __fastcall virtual TEsColorComboBox(System::Classes::TComponent* AOwner) : TEsCustomColorComboBox(AOwner) { }
-	/* TEsCustomColorComboBox.Destroy */ inline __fastcall virtual ~TEsColorComboBox(void) { }
+	/* TEsCustomColorComboBox.Destroy */ inline __fastcall virtual ~TEsColorComboBox() { }
 	
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsColorComboBox(HWND ParentWindow) : TEsCustomColorComboBox(ParentWindow) { }

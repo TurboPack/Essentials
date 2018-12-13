@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsTile.pas' rev: 31.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsTile.pas' rev: 33.00 (Windows)
 
 #ifndef EstileHPP
 #define EstileHPP
@@ -40,16 +40,16 @@ class PASCALIMPLEMENTATION TEsCustomTile : public Vcl::Controls::TGraphicControl
 protected:
 	Vcl::Graphics::TBitmap* FBitmap;
 	void __fastcall tiBitmapChange(System::TObject* Sender);
-	System::UnicodeString __fastcall GetVersion(void);
+	System::UnicodeString __fastcall GetVersion();
 	void __fastcall SetBitmap(Vcl::Graphics::TBitmap* Value);
 	void __fastcall SetVersion(const System::UnicodeString Value);
-	virtual void __fastcall Paint(void);
+	virtual void __fastcall Paint();
 	__property Vcl::Graphics::TBitmap* Bitmap = {read=FBitmap, write=SetBitmap};
 	__property System::UnicodeString Version = {read=GetVersion, write=SetVersion, stored=false};
 	
 public:
 	__fastcall virtual TEsCustomTile(System::Classes::TComponent* AComponent);
-	__fastcall virtual ~TEsCustomTile(void);
+	__fastcall virtual ~TEsCustomTile();
 	void __fastcall PaintTo(HDC DC, const System::Types::TRect &R);
 };
 
@@ -75,7 +75,7 @@ __published:
 	__property OnStartDrag;
 public:
 	/* TEsCustomTile.Create */ inline __fastcall virtual TEsTile(System::Classes::TComponent* AComponent) : TEsCustomTile(AComponent) { }
-	/* TEsCustomTile.Destroy */ inline __fastcall virtual ~TEsTile(void) { }
+	/* TEsCustomTile.Destroy */ inline __fastcall virtual ~TEsTile() { }
 	
 };
 

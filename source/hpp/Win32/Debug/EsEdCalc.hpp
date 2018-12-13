@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsEdCalc.pas' rev: 31.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsEdCalc.pas' rev: 33.00 (Windows)
 
 #ifndef EsedcalcHPP
 #define EsedcalcHPP
@@ -51,20 +51,20 @@ protected:
 	Escalc::TEsCalculator* Calculator;
 	System::Uitypes::TCursor HoldCursor;
 	bool WasAutoScroll;
-	double __fastcall GetAsFloat(void);
-	int __fastcall GetAsInteger(void);
-	System::UnicodeString __fastcall GetAsString(void);
+	double __fastcall GetAsFloat();
+	int __fastcall GetAsInteger();
+	System::UnicodeString __fastcall GetAsString();
 	void __fastcall SetAsFloat(double Value);
 	void __fastcall SetAsInteger(int Value);
 	void __fastcall SetAsString(const System::UnicodeString Value);
-	HIDESBASE bool __fastcall GetReadOnly(void);
+	HIDESBASE bool __fastcall GetReadOnly();
 	void __fastcall SetPopupCalcFont(Vcl::Graphics::TFont* Value);
 	HIDESBASE void __fastcall SetReadOnly(bool Value);
 	void __fastcall PopupButtonPressed(System::TObject* Sender, Escalc::TEsCalculatorButton Button);
 	void __fastcall PopupKeyDown(System::TObject* Sender, System::Word &Key, System::Classes::TShiftState Shift);
 	void __fastcall PopupKeyPress(System::TObject* Sender, System::WideChar &Key);
 	void __fastcall PopupMouseDown(System::TObject* Sender, System::Uitypes::TMouseButton Button, System::Classes::TShiftState Shift, int X, int Y);
-	DYNAMIC void __fastcall DoExit(void);
+	DYNAMIC void __fastcall DoExit();
 	DYNAMIC void __fastcall KeyDown(System::Word &Key, System::Classes::TShiftState Shift);
 	DYNAMIC void __fastcall KeyPress(System::WideChar &Key);
 	DYNAMIC void __fastcall PopupClose(System::TObject* Sender);
@@ -77,8 +77,8 @@ protected:
 	
 public:
 	__fastcall virtual TEsCustomNumberEdit(System::Classes::TComponent* AOwner);
-	__fastcall virtual ~TEsCustomNumberEdit(void);
-	DYNAMIC void __fastcall PopupOpen(void);
+	__fastcall virtual ~TEsCustomNumberEdit();
+	DYNAMIC void __fastcall PopupOpen();
 	__property int AsInteger = {read=GetAsInteger, write=SetAsInteger, nodefault};
 	__property double AsFloat = {read=GetAsFloat, write=SetAsFloat};
 	__property System::UnicodeString AsString = {read=GetAsString, write=SetAsString};
@@ -142,7 +142,7 @@ __published:
 	__property OnStartDrag;
 public:
 	/* TEsCustomNumberEdit.Create */ inline __fastcall virtual TEsNumberEdit(System::Classes::TComponent* AOwner) : TEsCustomNumberEdit(AOwner) { }
-	/* TEsCustomNumberEdit.Destroy */ inline __fastcall virtual ~TEsNumberEdit(void) { }
+	/* TEsCustomNumberEdit.Destroy */ inline __fastcall virtual ~TEsNumberEdit() { }
 	
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsNumberEdit(HWND ParentWindow) : TEsCustomNumberEdit(ParentWindow) { }

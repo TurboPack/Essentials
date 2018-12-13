@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsUtil.pas' rev: 32.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsUtil.pas' rev: 33.00 (Windows)
 
 #ifndef EsutilHPP
 #define EsutilHPP
@@ -28,8 +28,8 @@ namespace Esutil
 //-- var, const, procedure ---------------------------------------------------
 extern DELPHI_PACKAGE Essrmgr::TEsStringResource* StrRes;
 extern DELPHI_PACKAGE int __fastcall DaysInMonth(int Year, int Month);
-extern DELPHI_PACKAGE int __fastcall DefaultEpoch(void);
-extern DELPHI_PACKAGE System::Byte __fastcall GetLeftButton(void);
+extern DELPHI_PACKAGE int __fastcall DefaultEpoch();
+extern DELPHI_PACKAGE System::Byte __fastcall GetLeftButton();
 extern DELPHI_PACKAGE void __fastcall GetRGB(System::Uitypes::TColor Clr, System::Byte &IR, System::Byte &IG, System::Byte &IB);
 extern DELPHI_PACKAGE bool __fastcall IsLeapYear(int Year);
 extern DELPHI_PACKAGE int __fastcall Max(int I, int J);

@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsDbEd.pas' rev: 32.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsDbEd.pas' rev: 33.00 (Windows)
 
 #ifndef EsdbedHPP
 #define EsdbedHPP
@@ -51,17 +51,17 @@ protected:
 	Vcl::Controls::TControlCanvas* FCanvas;
 	Vcl::Dbctrls::TFieldDataLink* FDataLink;
 	bool FFocused;
-	System::UnicodeString __fastcall GetDataField(void);
-	Data::Db::TDataSource* __fastcall GetDataSource(void);
-	Data::Db::TField* __fastcall GetField(void);
-	HIDESBASE bool __fastcall GetReadOnly(void);
+	System::UnicodeString __fastcall GetDataField();
+	Data::Db::TDataSource* __fastcall GetDataSource();
+	Data::Db::TField* __fastcall GetField();
+	HIDESBASE bool __fastcall GetReadOnly();
 	void __fastcall SetDataField(const System::UnicodeString Value);
 	void __fastcall SetDataSource(Data::Db::TDataSource* Value);
 	void __fastcall SetFocused(bool Value);
 	HIDESBASE void __fastcall SetReadOnly(bool Value);
 	void __fastcall DataChange(System::TObject* Sender);
 	void __fastcall EditingChange(System::TObject* Sender);
-	System::Types::TPoint __fastcall GetTextMargins(void);
+	System::Types::TPoint __fastcall GetTextMargins();
 	void __fastcall UpdateData(System::TObject* Sender);
 	MESSAGE void __fastcall WMCut(Winapi::Messages::TMessage &Message);
 	MESSAGE void __fastcall WMPaste(Winapi::Messages::TMessage &Message);
@@ -69,8 +69,8 @@ protected:
 	HIDESBASE MESSAGE void __fastcall CMEnter(Winapi::Messages::TWMNoParams &Message);
 	HIDESBASE MESSAGE void __fastcall CMExit(Winapi::Messages::TWMNoParams &Message);
 	MESSAGE void __fastcall CMGetDataLink(Winapi::Messages::TMessage &Message);
-	DYNAMIC void __fastcall Change(void);
-	DYNAMIC bool __fastcall GetButtonEnabled(void);
+	DYNAMIC void __fastcall Change();
+	DYNAMIC bool __fastcall GetButtonEnabled();
 	DYNAMIC void __fastcall KeyDown(System::Word &Key, System::Classes::TShiftState Shift);
 	DYNAMIC void __fastcall KeyPress(System::WideChar &Key);
 	virtual void __fastcall Notification(System::Classes::TComponent* AComponent, System::Classes::TOperation Operation);
@@ -81,8 +81,8 @@ protected:
 	
 public:
 	__fastcall virtual TEsCustomDbNumberEdit(System::Classes::TComponent* AOwner);
-	__fastcall virtual ~TEsCustomDbNumberEdit(void);
-	DYNAMIC void __fastcall PopupOpen(void);
+	__fastcall virtual ~TEsCustomDbNumberEdit();
+	DYNAMIC void __fastcall PopupOpen();
 	__property Data::Db::TField* Field = {read=GetField};
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsCustomDbNumberEdit(HWND ParentWindow) : Esedcalc::TEsCustomNumberEdit(ParentWindow) { }
@@ -146,7 +146,7 @@ __published:
 	__property OnStartDrag;
 public:
 	/* TEsCustomDbNumberEdit.Create */ inline __fastcall virtual TEsDbNumberEdit(System::Classes::TComponent* AOwner) : TEsCustomDbNumberEdit(AOwner) { }
-	/* TEsCustomDbNumberEdit.Destroy */ inline __fastcall virtual ~TEsDbNumberEdit(void) { }
+	/* TEsCustomDbNumberEdit.Destroy */ inline __fastcall virtual ~TEsDbNumberEdit() { }
 	
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsDbNumberEdit(HWND ParentWindow) : TEsCustomDbNumberEdit(ParentWindow) { }
@@ -163,17 +163,17 @@ protected:
 	Vcl::Controls::TControlCanvas* FCanvas;
 	Vcl::Dbctrls::TFieldDataLink* FDataLink;
 	bool FFocused;
-	System::UnicodeString __fastcall GetDataField(void);
-	Data::Db::TDataSource* __fastcall GetDataSource(void);
-	Data::Db::TField* __fastcall GetField(void);
-	HIDESBASE bool __fastcall GetReadOnly(void);
+	System::UnicodeString __fastcall GetDataField();
+	Data::Db::TDataSource* __fastcall GetDataSource();
+	Data::Db::TField* __fastcall GetField();
+	HIDESBASE bool __fastcall GetReadOnly();
 	void __fastcall SetDataField(const System::UnicodeString Value);
 	void __fastcall SetDataSource(Data::Db::TDataSource* Value);
 	void __fastcall SetFocused(bool Value);
 	HIDESBASE void __fastcall SetReadOnly(bool Value);
 	void __fastcall DataChange(System::TObject* Sender);
 	void __fastcall EditingChange(System::TObject* Sender);
-	System::Types::TPoint __fastcall GetTextMargins(void);
+	System::Types::TPoint __fastcall GetTextMargins();
 	void __fastcall UpdateData(System::TObject* Sender);
 	MESSAGE void __fastcall WMCut(Winapi::Messages::TMessage &Message);
 	MESSAGE void __fastcall WMPaste(Winapi::Messages::TMessage &Message);
@@ -181,8 +181,8 @@ protected:
 	HIDESBASE MESSAGE void __fastcall CMEnter(Winapi::Messages::TWMNoParams &Message);
 	HIDESBASE MESSAGE void __fastcall CMExit(Winapi::Messages::TWMNoParams &Message);
 	MESSAGE void __fastcall CMGetDataLink(Winapi::Messages::TMessage &Message);
-	DYNAMIC void __fastcall Change(void);
-	DYNAMIC bool __fastcall GetButtonEnabled(void);
+	DYNAMIC void __fastcall Change();
+	DYNAMIC bool __fastcall GetButtonEnabled();
 	DYNAMIC void __fastcall KeyDown(System::Word &Key, System::Classes::TShiftState Shift);
 	DYNAMIC void __fastcall KeyPress(System::WideChar &Key);
 	virtual void __fastcall Notification(System::Classes::TComponent* AComponent, System::Classes::TOperation Operation);
@@ -193,8 +193,8 @@ protected:
 	
 public:
 	__fastcall virtual TEsCustomDbDateEdit(System::Classes::TComponent* AOwner);
-	__fastcall virtual ~TEsCustomDbDateEdit(void);
-	DYNAMIC void __fastcall PopupOpen(void);
+	__fastcall virtual ~TEsCustomDbDateEdit();
+	DYNAMIC void __fastcall PopupOpen();
 	__property Data::Db::TField* Field = {read=GetField};
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsCustomDbDateEdit(HWND ParentWindow) : Esedcal::TEsCustomDateEdit(ParentWindow) { }
@@ -264,7 +264,7 @@ __published:
 	__property OnStartDrag;
 public:
 	/* TEsCustomDbDateEdit.Create */ inline __fastcall virtual TEsDbDateEdit(System::Classes::TComponent* AOwner) : TEsCustomDbDateEdit(AOwner) { }
-	/* TEsCustomDbDateEdit.Destroy */ inline __fastcall virtual ~TEsDbDateEdit(void) { }
+	/* TEsCustomDbDateEdit.Destroy */ inline __fastcall virtual ~TEsDbDateEdit() { }
 	
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsDbDateEdit(HWND ParentWindow) : TEsCustomDbDateEdit(ParentWindow) { }

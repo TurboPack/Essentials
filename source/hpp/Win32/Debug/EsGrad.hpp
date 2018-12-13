@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsGrad.pas' rev: 31.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsGrad.pas' rev: 33.00 (Windows)
 
 #ifndef EsgradHPP
 #define EsgradHPP
@@ -47,17 +47,17 @@ protected:
 	TEsColorBand FColorBands;
 	System::StaticArray<unsigned, 256> gGradColors;
 	HPALETTE gPalette;
-	System::UnicodeString __fastcall GetVersion(void);
+	System::UnicodeString __fastcall GetVersion();
 	void __fastcall SetColorBands(TEsColorBand Value);
 	void __fastcall SetDirection(TGradDirection Value);
 	void __fastcall SetFromColor(System::Uitypes::TColor Value);
 	void __fastcall SetToColor(System::Uitypes::TColor Value);
 	void __fastcall SetVersion(const System::UnicodeString Value);
-	void __fastcall gCalculateColors(void);
+	void __fastcall gCalculateColors();
 	void __fastcall gFillRectGradient(HDC DC, const System::Types::TRect &R);
 	MESSAGE void __fastcall WMEraseBkgnd(Winapi::Messages::TWMEraseBkgnd &Msg);
 	DYNAMIC bool __fastcall PaletteChanged(bool Foreground);
-	virtual void __fastcall Paint(void);
+	virtual void __fastcall Paint();
 	__property TEsColorBand ColorBands = {read=FColorBands, write=SetColorBands, default=128};
 	__property TGradDirection Direction = {read=FDirection, write=SetDirection, default=0};
 	__property System::Uitypes::TColor FromColor = {read=FFromColor, write=SetFromColor, default=255};
@@ -66,7 +66,7 @@ protected:
 	
 public:
 	__fastcall virtual TEsCustomGradient(System::Classes::TComponent* AComponent);
-	__fastcall virtual ~TEsCustomGradient(void);
+	__fastcall virtual ~TEsCustomGradient();
 	void __fastcall PaintTo(HDC DC, const System::Types::TRect &R);
 };
 
@@ -95,7 +95,7 @@ __published:
 	__property OnStartDrag;
 public:
 	/* TEsCustomGradient.Create */ inline __fastcall virtual TEsGradient(System::Classes::TComponent* AComponent) : TEsCustomGradient(AComponent) { }
-	/* TEsCustomGradient.Destroy */ inline __fastcall virtual ~TEsGradient(void) { }
+	/* TEsCustomGradient.Destroy */ inline __fastcall virtual ~TEsGradient() { }
 	
 };
 

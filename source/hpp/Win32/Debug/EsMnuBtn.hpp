@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsMnuBtn.pas' rev: 31.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsMnuBtn.pas' rev: 33.00 (Windows)
 
 #ifndef EsmnubtnHPP
 #define EsmnubtnHPP
@@ -41,7 +41,7 @@ class PASCALIMPLEMENTATION TEsCustomMenuButton : public Esbase::TEsBase
 	typedef Esbase::TEsBase inherited;
 	
 private:
-	Vcl::Graphics::TBitmap* __fastcall GetGlyph(void);
+	Vcl::Graphics::TBitmap* __fastcall GetGlyph();
 	
 protected:
 	Vcl::Controls::TCaption FCaption;
@@ -56,7 +56,7 @@ protected:
 	void __fastcall SetMenuPosition(TEsMenuPosition Value);
 	void __fastcall SetShowGlyph(bool Value);
 	void __fastcall SetGlyph(Vcl::Graphics::TBitmap* Glyph);
-	void __fastcall cbDrawFocusRect(void);
+	void __fastcall cbDrawFocusRect();
 	HIDESBASE MESSAGE void __fastcall CMEnabledChanged(Winapi::Messages::TMessage &Message);
 	HIDESBASE MESSAGE void __fastcall CMFontChanged(Winapi::Messages::TMessage &Msg);
 	HIDESBASE MESSAGE void __fastcall CMSysColorChange(Winapi::Messages::TMessage &Message);
@@ -71,7 +71,7 @@ protected:
 	DYNAMIC void __fastcall MouseDown(System::Uitypes::TMouseButton Button, System::Classes::TShiftState Shift, int X, int Y);
 	DYNAMIC void __fastcall MouseMove(System::Classes::TShiftState Shift, int X, int Y);
 	DYNAMIC void __fastcall MouseUp(System::Uitypes::TMouseButton Button, System::Classes::TShiftState Shift, int X, int Y);
-	virtual void __fastcall Paint(void);
+	virtual void __fastcall Paint();
 	__property Vcl::Controls::TCaption Caption = {read=FCaption, write=SetCaption};
 	__property TEsMenuPosition MenuPosition = {read=FMenuPosition, write=SetMenuPosition, default=0};
 	__property bool ShowGlyph = {read=FShowGlyph, write=SetShowGlyph, default=1};
@@ -79,8 +79,8 @@ protected:
 	
 public:
 	__fastcall virtual TEsCustomMenuButton(System::Classes::TComponent* AOwner);
-	DYNAMIC void __fastcall Click(void);
-	__fastcall virtual ~TEsCustomMenuButton(void);
+	DYNAMIC void __fastcall Click();
+	__fastcall virtual ~TEsCustomMenuButton();
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsCustomMenuButton(HWND ParentWindow) : Esbase::TEsBase(ParentWindow) { }
 	
@@ -127,7 +127,7 @@ __published:
 	__property OnMouseUp;
 public:
 	/* TEsCustomMenuButton.Create */ inline __fastcall virtual TEsMenuButton(System::Classes::TComponent* AOwner) : TEsCustomMenuButton(AOwner) { }
-	/* TEsCustomMenuButton.Destroy */ inline __fastcall virtual ~TEsMenuButton(void) { }
+	/* TEsCustomMenuButton.Destroy */ inline __fastcall virtual ~TEsMenuButton() { }
 	
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsMenuButton(HWND ParentWindow) : TEsCustomMenuButton(ParentWindow) { }

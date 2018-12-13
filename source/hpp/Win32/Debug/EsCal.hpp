@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsCal.pas' rev: 31.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsCal.pas' rev: 33.00 (Windows)
 
 #ifndef EscalHPP
 #define EscalHPP
@@ -58,7 +58,7 @@ private:
 	bool FUpdating;
 	System::Classes::TNotifyEvent FOnChange;
 	bool SettingScheme;
-	void __fastcall DoOnChange(void);
+	void __fastcall DoOnChange();
 	System::Uitypes::TColor __fastcall GetColor(int Index);
 	void __fastcall SetColor(int Index, System::Uitypes::TColor Value);
 	void __fastcall SetColorScheme(TEsCalColorScheme Value);
@@ -67,8 +67,8 @@ public:
 	TEsCalColorArray FCalColors;
 	TEsCalColorScheme FColorScheme;
 	virtual void __fastcall Assign(System::Classes::TPersistent* Source);
-	void __fastcall BeginUpdate(void);
-	void __fastcall EndUpdate(void);
+	void __fastcall BeginUpdate();
+	void __fastcall EndUpdate();
 	__property System::Classes::TNotifyEvent OnChange = {read=FOnChange, write=FOnChange};
 	
 __published:
@@ -80,10 +80,10 @@ __published:
 	__property System::Uitypes::TColor MonthAndYear = {read=GetColor, write=SetColor, index=4, nodefault};
 	__property System::Uitypes::TColor Weekend = {read=GetColor, write=SetColor, index=5, nodefault};
 public:
-	/* TPersistent.Destroy */ inline __fastcall virtual ~TEsCalColors(void) { }
+	/* TPersistent.Destroy */ inline __fastcall virtual ~TEsCalColors() { }
 	
 public:
-	/* TObject.Create */ inline __fastcall TEsCalColors(void) : System::Classes::TPersistent() { }
+	/* TObject.Create */ inline __fastcall TEsCalColors() : System::Classes::TPersistent() { }
 	
 };
 
@@ -137,9 +137,9 @@ protected:
 	void __fastcall calBtnClick(System::TObject* Sender);
 	void __fastcall calChangeMonth(System::TObject* Sender);
 	void __fastcall calColorChange(System::TObject* Sender);
-	System::Types::TRect __fastcall calGetCurrentRectangle(void);
-	void __fastcall calRebuildCalArray(void);
-	void __fastcall calRecalcSize(void);
+	System::Types::TRect __fastcall calGetCurrentRectangle();
+	void __fastcall calRebuildCalArray();
+	void __fastcall calRecalcSize();
 	HIDESBASE MESSAGE void __fastcall CMCtl3DChanged(Winapi::Messages::TMessage &Msg);
 	HIDESBASE MESSAGE void __fastcall CMEnter(Winapi::Messages::TMessage &Msg);
 	HIDESBASE MESSAGE void __fastcall CMExit(Winapi::Messages::TMessage &Msg);
@@ -147,19 +147,19 @@ protected:
 	HIDESBASE MESSAGE void __fastcall WMEraseBkgnd(Winapi::Messages::TWMEraseBkgnd &Msg);
 	MESSAGE void __fastcall WMGetDlgCode(Winapi::Messages::TWMNoParams &Msg);
 	virtual void __fastcall CreateParams(Vcl::Controls::TCreateParams &Params);
-	virtual void __fastcall CreateWnd(void);
+	virtual void __fastcall CreateWnd();
 	DYNAMIC void __fastcall DoOnChange(System::TDateTime Value);
 	DYNAMIC void __fastcall DoOnMouseWheel(System::Classes::TShiftState Shift, short Delta, short XPos, short YPos);
 	DYNAMIC void __fastcall KeyDown(System::Word &Key, System::Classes::TShiftState Shift);
 	DYNAMIC void __fastcall KeyPress(System::WideChar &Key);
 	DYNAMIC void __fastcall MouseDown(System::Uitypes::TMouseButton Button, System::Classes::TShiftState Shift, int X, int Y);
 	DYNAMIC void __fastcall MouseUp(System::Uitypes::TMouseButton Button, System::Classes::TShiftState Shift, int X, int Y);
-	virtual void __fastcall Paint(void);
+	virtual void __fastcall Paint();
 	
 public:
 	__fastcall virtual TEsCustomCalendar(System::Classes::TComponent* AOwner);
 	__fastcall virtual TEsCustomCalendar(System::Classes::TComponent* AOwner, bool AsPopup);
-	__fastcall virtual ~TEsCustomCalendar(void);
+	__fastcall virtual ~TEsCustomCalendar();
 	virtual void __fastcall SetBounds(int ALeft, int ATop, int AWidth, int AHeight);
 	__property Vcl::Forms::TBorderStyle BorderStyle = {read=FBorderStyle, write=SetBorderStyle, default=0};
 	__property bool Browsing = {read=FBrowsing, nodefault};
@@ -232,7 +232,7 @@ __published:
 public:
 	/* TEsCustomCalendar.Create */ inline __fastcall virtual TEsCalendar(System::Classes::TComponent* AOwner) : TEsCustomCalendar(AOwner) { }
 	/* TEsCustomCalendar.CreateEx */ inline __fastcall virtual TEsCalendar(System::Classes::TComponent* AOwner, bool AsPopup) : TEsCustomCalendar(AOwner, AsPopup) { }
-	/* TEsCustomCalendar.Destroy */ inline __fastcall virtual ~TEsCalendar(void) { }
+	/* TEsCustomCalendar.Destroy */ inline __fastcall virtual ~TEsCalendar() { }
 	
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsCalendar(HWND ParentWindow) : TEsCustomCalendar(ParentWindow) { }

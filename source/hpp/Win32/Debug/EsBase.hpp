@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsBase.pas' rev: 31.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsBase.pas' rev: 33.00 (Windows)
 
 #ifndef EsbaseHPP
 #define EsbaseHPP
@@ -61,7 +61,7 @@ public:
 	/* Exception.CreateResHelp */ inline __fastcall EEssentialsError(System::PResStringRec ResStringRec, int AHelpContext)/* overload */ : System::Sysutils::Exception(ResStringRec, AHelpContext) { }
 	/* Exception.CreateResFmtHelp */ inline __fastcall EEssentialsError(System::PResStringRec ResStringRec, const System::TVarRec *Args, const int Args_High, int AHelpContext)/* overload */ : System::Sysutils::Exception(ResStringRec, Args, Args_High, AHelpContext) { }
 	/* Exception.CreateResFmtHelp */ inline __fastcall EEssentialsError(NativeUInt Ident, const System::TVarRec *Args, const int Args_High, int AHelpContext)/* overload */ : System::Sysutils::Exception(Ident, Args, Args_High, AHelpContext) { }
-	/* Exception.Destroy */ inline __fastcall virtual ~EEssentialsError(void) { }
+	/* Exception.Destroy */ inline __fastcall virtual ~EEssentialsError() { }
 	
 };
 
@@ -75,10 +75,10 @@ class PASCALIMPLEMENTATION TEsAttachedLabel : public Eslabel::TEsCustomLabel
 	
 private:
 	Vcl::Controls::TWinControl* FEsControl;
-	void __fastcall eslSavePosition(void);
+	void __fastcall eslSavePosition();
 	
 protected:
-	virtual void __fastcall Loaded(void);
+	virtual void __fastcall Loaded();
 	
 public:
 	__fastcall virtual TEsAttachedLabel(System::Classes::TComponent* AOwner);
@@ -112,7 +112,7 @@ __published:
 	__property CustomSettings;
 	__property Vcl::Controls::TWinControl* EsControl = {read=FEsControl, write=FEsControl};
 public:
-	/* TEsCustomLabel.Destroy */ inline __fastcall virtual ~TEsAttachedLabel(void) { }
+	/* TEsCustomLabel.Destroy */ inline __fastcall virtual ~TEsAttachedLabel() { }
 	
 };
 
@@ -126,8 +126,8 @@ private:
 	int FOffsetY;
 	System::Classes::TNotifyEvent FOnChange;
 	TEsAttachEvent FOnAttach;
-	void __fastcall DoOnAttach(void);
-	void __fastcall DoOnChange(void);
+	void __fastcall DoOnAttach();
+	void __fastcall DoOnChange();
 	void __fastcall SetOffsetX(int Value);
 	void __fastcall SetOffsetY(int Value);
 	void __fastcall SetVisible(bool Value);
@@ -144,10 +144,10 @@ __published:
 	__property int OffsetY = {read=FOffsetY, write=SetOffsetY, nodefault};
 	__property bool Visible = {read=FVisible, write=SetVisible, nodefault};
 public:
-	/* TPersistent.Destroy */ inline __fastcall virtual ~TEsLabelInfo(void) { }
+	/* TPersistent.Destroy */ inline __fastcall virtual ~TEsLabelInfo() { }
 	
 public:
-	/* TObject.Create */ inline __fastcall TEsLabelInfo(void) : System::Classes::TPersistent() { }
+	/* TObject.Create */ inline __fastcall TEsLabelInfo() : System::Classes::TPersistent() { }
 	
 };
 
@@ -161,12 +161,12 @@ class PASCALIMPLEMENTATION TEsBase : public Vcl::Controls::TCustomControl
 protected:
 	TEsLabelInfo* FEsLabel;
 	TMouseWheelEvent FOnMouseWheel;
-	TEsAttachedLabel* __fastcall GetAttachedLabel(void);
-	System::UnicodeString __fastcall GetVersion(void);
+	TEsAttachedLabel* __fastcall GetAttachedLabel();
+	System::UnicodeString __fastcall GetVersion();
 	void __fastcall SetVersion(const System::UnicodeString Value);
 	void __fastcall LabelChange(System::TObject* Sender);
 	void __fastcall LabelAttach(System::TObject* Sender, bool Value);
-	void __fastcall PositionLabel(void);
+	void __fastcall PositionLabel();
 	MESSAGE void __fastcall ESAssignLabel(Winapi::Messages::TMessage &Msg);
 	MESSAGE void __fastcall ESPositionLabel(Winapi::Messages::TMessage &Msg);
 	MESSAGE void __fastcall ESRecordLabelPosition(Winapi::Messages::TMessage &Msg);
@@ -179,7 +179,7 @@ protected:
 	
 public:
 	__fastcall virtual TEsBase(System::Classes::TComponent* AOwner);
-	__fastcall virtual ~TEsBase(void);
+	__fastcall virtual ~TEsBase();
 	virtual void __fastcall SetBounds(int ALeft, int ATop, int AWidth, int AHeight);
 	__property TEsAttachedLabel* AttachedLabel = {read=GetAttachedLabel};
 	

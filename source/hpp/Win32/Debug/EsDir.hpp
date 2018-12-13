@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsDir.pas' rev: 32.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsDir.pas' rev: 33.00 (Windows)
 
 #ifndef EsdirHPP
 #define EsdirHPP
@@ -47,7 +47,7 @@ protected:
 	void __fastcall SetShowCenter(bool Value);
 	void __fastcall SetDirectionBitmap(Vcl::Graphics::TBitmap* Value);
 	DYNAMIC void __fastcall MouseDown(System::Uitypes::TMouseButton Button, System::Classes::TShiftState Shift, int X, int Y);
-	virtual void __fastcall Paint(void);
+	virtual void __fastcall Paint();
 	__property int Direction = {read=FDirection, write=SetDirection, default=0};
 	__property int NumDirections = {read=FNumDirections, write=SetNumDirections, default=8};
 	__property Vcl::Graphics::TBitmap* SelectedBitmap = {read=FSelectedBitmap, write=SetSelectedBitmap};
@@ -57,7 +57,7 @@ protected:
 	
 public:
 	__fastcall virtual TEsCustomDirectionPicker(System::Classes::TComponent* AComponent);
-	__fastcall virtual ~TEsCustomDirectionPicker(void);
+	__fastcall virtual ~TEsCustomDirectionPicker();
 };
 
 
@@ -80,7 +80,7 @@ __published:
 	__property OnMouseUp;
 public:
 	/* TEsCustomDirectionPicker.Create */ inline __fastcall virtual TEsDirectionPicker(System::Classes::TComponent* AComponent) : TEsCustomDirectionPicker(AComponent) { }
-	/* TEsCustomDirectionPicker.Destroy */ inline __fastcall virtual ~TEsDirectionPicker(void) { }
+	/* TEsCustomDirectionPicker.Destroy */ inline __fastcall virtual ~TEsDirectionPicker() { }
 	
 };
 

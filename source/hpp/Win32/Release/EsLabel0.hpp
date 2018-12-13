@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsLabel0.pas' rev: 32.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsLabel0.pas' rev: 33.00 (Windows)
 
 #ifndef Eslabel0HPP
 #define Eslabel0HPP
@@ -103,11 +103,11 @@ public:
 	void __fastcall DeleteScheme(const System::UnicodeString S);
 	void __fastcall HighlightDirectionChange(System::TObject* Sender);
 	void __fastcall ShadowDirectionChange(System::TObject* Sender);
-	void __fastcall SchemeChange(void);
+	void __fastcall SchemeChange();
 public:
 	/* TCustomForm.Create */ inline __fastcall virtual TEsLabelFrm(System::Classes::TComponent* AOwner) : Vcl::Forms::TForm(AOwner) { }
 	/* TCustomForm.CreateNew */ inline __fastcall virtual TEsLabelFrm(System::Classes::TComponent* AOwner, int Dummy) : Vcl::Forms::TForm(AOwner, Dummy) { }
-	/* TCustomForm.Destroy */ inline __fastcall virtual ~TEsLabelFrm(void) { }
+	/* TCustomForm.Destroy */ inline __fastcall virtual ~TEsLabelFrm() { }
 	
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsLabelFrm(HWND ParentWindow) : Vcl::Forms::TForm(ParentWindow) { }
@@ -123,12 +123,12 @@ class PASCALIMPLEMENTATION TEsLabelEditor : public Designeditors::TDefaultEditor
 public:
 	virtual void __fastcall ExecuteVerb(int Index);
 	virtual System::UnicodeString __fastcall GetVerb(int Index);
-	virtual int __fastcall GetVerbCount(void);
+	virtual int __fastcall GetVerbCount();
 public:
 	/* TComponentEditor.Create */ inline __fastcall virtual TEsLabelEditor(System::Classes::TComponent* AComponent, Designintf::_di_IDesigner ADesigner) : Designeditors::TDefaultEditor(AComponent, ADesigner) { }
 	
 public:
-	/* TObject.Destroy */ inline __fastcall virtual ~TEsLabelEditor(void) { }
+	/* TObject.Destroy */ inline __fastcall virtual ~TEsLabelEditor() { }
 	
 };
 
@@ -140,11 +140,11 @@ class PASCALIMPLEMENTATION TEsCustomSettingsProperty : public Designeditors::TCl
 	typedef Designeditors::TClassProperty inherited;
 	
 public:
-	virtual void __fastcall Edit(void);
-	virtual Designintf::TPropertyAttributes __fastcall GetAttributes(void);
+	virtual void __fastcall Edit();
+	virtual Designintf::TPropertyAttributes __fastcall GetAttributes();
 public:
 	/* TPropertyEditor.Create */ inline __fastcall virtual TEsCustomSettingsProperty(const Designintf::_di_IDesigner ADesigner, int APropCount) : Designeditors::TClassProperty(ADesigner, APropCount) { }
-	/* TPropertyEditor.Destroy */ inline __fastcall virtual ~TEsCustomSettingsProperty(void) { }
+	/* TPropertyEditor.Destroy */ inline __fastcall virtual ~TEsCustomSettingsProperty() { }
 	
 };
 

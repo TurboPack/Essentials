@@ -1,5 +1,5 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
 // (DO NOT EDIT: machine generated header) 'EssentialsDD.dpk' rev: 32.00 (Windows)
@@ -21,6 +21,7 @@
 #include <EsDir.hpp>
 #include <EsAbout0.hpp>
 #include <EsWebPE.hpp>
+#include <System.UITypes.hpp>	// (rtl)
 #include <Winapi.Windows.hpp>	// (rtl)
 #include <Winapi.PsAPI.hpp>	// (rtl)
 #include <System.Character.hpp>	// (rtl)
@@ -28,15 +29,16 @@
 #include <System.SysUtils.hpp>	// (rtl)
 #include <System.VarUtils.hpp>	// (rtl)
 #include <System.Variants.hpp>	// (rtl)
+#include <System.Math.hpp>	// (rtl)
 #include <System.Rtti.hpp>	// (rtl)
 #include <System.TypInfo.hpp>	// (rtl)
-#include <System.Math.hpp>	// (rtl)
 #include <System.Generics.Defaults.hpp>	// (rtl)
 #include <System.Classes.hpp>	// (rtl)
 #include <System.TimeSpan.hpp>	// (rtl)
 #include <System.DateUtils.hpp>	// (rtl)
 #include <System.IOUtils.hpp>	// (rtl)
 #include <System.Win.Registry.hpp>	// (rtl)
+#include <System.UIConsts.hpp>	// (rtl)
 #include <Vcl.Graphics.hpp>	// (vcl)
 #include <System.Actions.hpp>	// (rtl)
 #include <Vcl.ActnList.hpp>	// (vcl)
@@ -62,8 +64,13 @@
 #include <IDEMessages.hpp>	// (designide)
 #include <Vcl.CaptionedDockTree.hpp>	// (vcl)
 #include <Vcl.DockTabSet.hpp>	// (vcl)
-#include <PercentageDockTree.hpp>	// (designide)
+#include <Vcl.Grids.hpp>	// (vcl)
+#include <Vcl.CategoryButtons.hpp>	// (vcl)
+#include <Vcl.ButtonGroup.hpp>	// (vcl)
+#include <Vcl.SysStyles.hpp>	// (vcl)
+#include <Vcl.Styles.hpp>	// (vcl)
 #include <BrandingAPI.hpp>	// (designide)
+#include <PercentageDockTree.hpp>	// (designide)
 #include <Vcl.Buttons.hpp>	// (vcl)
 #include <Vcl.ExtDlgs.hpp>	// (vcl)
 #include <Winapi.Mapi.hpp>	// (rtl)

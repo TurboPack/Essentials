@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsLabel.pas' rev: 32.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsLabel.pas' rev: 33.00 (Windows)
 
 #ifndef EslabelHPP
 #define EslabelHPP
@@ -66,8 +66,8 @@ private:
 	System::Classes::TNotifyEvent FOnColorChange;
 	System::Classes::TNotifyEvent FOnStyleChange;
 	bool FUpdating;
-	void __fastcall DoOnColorChange(void);
-	void __fastcall DoOnStyleChange(void);
+	void __fastcall DoOnColorChange();
+	void __fastcall DoOnStyleChange();
 	void __fastcall SetGraduateFromColor(System::Uitypes::TColor Value);
 	void __fastcall SetGraduateStyle(TEsGraduateStyle Value);
 	void __fastcall SetHighlightColor(System::Uitypes::TColor Value);
@@ -81,8 +81,8 @@ private:
 	
 public:
 	virtual void __fastcall Assign(System::Classes::TPersistent* Source);
-	void __fastcall BeginUpdate(void);
-	void __fastcall EndUpdate(void);
+	void __fastcall BeginUpdate();
+	void __fastcall EndUpdate();
 	__property System::Classes::TNotifyEvent OnColorChange = {read=FOnColorChange, write=FOnColorChange};
 	__property System::Classes::TNotifyEvent OnStyleChange = {read=FOnStyleChange, write=FOnStyleChange};
 	
@@ -98,10 +98,10 @@ __published:
 	__property TEsShadeDirection ShadowDirection = {read=FShadowDirection, write=SetShadowDirection, default=4};
 	__property TEsShadeStyle ShadowStyle = {read=FShadowStyle, write=SetShadowStyle, default=0};
 public:
-	/* TPersistent.Destroy */ inline __fastcall virtual ~TEsCustomSettings(void) { }
+	/* TPersistent.Destroy */ inline __fastcall virtual ~TEsCustomSettings() { }
 	
 public:
-	/* TObject.Create */ inline __fastcall TEsCustomSettings(void) : System::Classes::TPersistent() { }
+	/* TObject.Create */ inline __fastcall TEsCustomSettings() : System::Classes::TPersistent() { }
 	
 };
 
@@ -122,8 +122,8 @@ protected:
 	System::StaticArray<System::StaticArray<System::Uitypes::TColor, 3>, 6> eslSchemes;
 	bool SettingColorScheme;
 	bool SettingAppearance;
-	System::UnicodeString __fastcall GetVersion(void);
-	bool __fastcall GetWordWrap(void);
+	System::UnicodeString __fastcall GetVersion();
+	bool __fastcall GetWordWrap();
 	void __fastcall SetAppearance(TEsAppearance Value);
 	void __fastcall SetColorScheme(TEsColorScheme Value);
 	HIDESBASE void __fastcall SetWordWrap(bool Value);
@@ -131,7 +131,7 @@ protected:
 	void __fastcall PaintPrim(const System::Types::TRect &CR, System::Word Flags);
 	void __fastcall ColorChanged(System::TObject* Sender);
 	void __fastcall StyleChanged(System::TObject* Sender);
-	virtual void __fastcall Paint(void);
+	virtual void __fastcall Paint();
 	__property TEsAppearance Appearance = {read=FAppearance, write=SetAppearance, default=3};
 	__property TEsColorScheme ColorScheme = {read=FColorScheme, write=SetColorScheme, default=2};
 	__property TEsCustomSettings* CustomSettings = {read=FCustomSettings, write=FCustomSettings};
@@ -140,7 +140,7 @@ protected:
 	
 public:
 	__fastcall virtual TEsCustomLabel(System::Classes::TComponent* AOwner);
-	__fastcall virtual ~TEsCustomLabel(void);
+	__fastcall virtual ~TEsCustomLabel();
 	void __fastcall PaintTo(HDC DC, const System::Types::TRect &CR, System::Word Flags);
 	__property AutoSize = {default=1};
 };
@@ -186,7 +186,7 @@ __published:
 	__property OnMouseUp;
 public:
 	/* TEsCustomLabel.Create */ inline __fastcall virtual TEsLabel(System::Classes::TComponent* AOwner) : TEsCustomLabel(AOwner) { }
-	/* TEsCustomLabel.Destroy */ inline __fastcall virtual ~TEsLabel(void) { }
+	/* TEsCustomLabel.Destroy */ inline __fastcall virtual ~TEsLabel() { }
 	
 };
 

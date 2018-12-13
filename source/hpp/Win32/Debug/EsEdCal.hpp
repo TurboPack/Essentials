@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsEdCal.pas' rev: 31.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsEdCal.pas' rev: 33.00 (Windows)
 
 #ifndef EsedcalHPP
 #define EsedcalHPP
@@ -70,8 +70,8 @@ protected:
 	bool GettingDate;
 	System::Uitypes::TCursor HoldCursor;
 	bool WasAutoScroll;
-	System::TDateTime __fastcall GetDate(void);
-	HIDESBASE bool __fastcall GetReadOnly(void);
+	System::TDateTime __fastcall GetDate();
+	HIDESBASE bool __fastcall GetReadOnly();
 	void __fastcall SetForceCentury(bool Value);
 	void __fastcall SetPopupCalFont(Vcl::Graphics::TFont* Value);
 	HIDESBASE void __fastcall SetReadOnly(bool Value);
@@ -79,7 +79,7 @@ protected:
 	void __fastcall PopupKeyDown(System::TObject* Sender, System::Word &Key, System::Classes::TShiftState Shift);
 	void __fastcall PopupKeyPress(System::TObject* Sender, System::WideChar &Key);
 	void __fastcall PopupMouseDown(System::TObject* Sender, System::Uitypes::TMouseButton Button, System::Classes::TShiftState Shift, int X, int Y);
-	DYNAMIC void __fastcall DoExit(void);
+	DYNAMIC void __fastcall DoExit();
 	DYNAMIC void __fastcall KeyDown(System::Word &Key, System::Classes::TShiftState Shift);
 	DYNAMIC void __fastcall KeyPress(System::WideChar &Key);
 	DYNAMIC void __fastcall PopupClose(System::TObject* Sender);
@@ -101,8 +101,8 @@ protected:
 	
 public:
 	__fastcall virtual TEsCustomDateEdit(System::Classes::TComponent* AOwner);
-	__fastcall virtual ~TEsCustomDateEdit(void);
-	DYNAMIC void __fastcall PopupOpen(void);
+	__fastcall virtual ~TEsCustomDateEdit();
+	DYNAMIC void __fastcall PopupOpen();
 	DYNAMIC System::UnicodeString __fastcall FormatDate(System::TDateTime Value);
 	__property System::TDateTime Date = {read=GetDate, write=SetDate};
 public:
@@ -173,7 +173,7 @@ __published:
 	__property OnStartDrag;
 public:
 	/* TEsCustomDateEdit.Create */ inline __fastcall virtual TEsDateEdit(System::Classes::TComponent* AOwner) : TEsCustomDateEdit(AOwner) { }
-	/* TEsCustomDateEdit.Destroy */ inline __fastcall virtual ~TEsDateEdit(void) { }
+	/* TEsCustomDateEdit.Destroy */ inline __fastcall virtual ~TEsDateEdit() { }
 	
 public:
 	/* TWinControl.CreateParented */ inline __fastcall TEsDateEdit(HWND ParentWindow) : TEsCustomDateEdit(ParentWindow) { }

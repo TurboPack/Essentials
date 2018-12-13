@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'EsMarque.pas' rev: 31.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'EsMarque.pas' rev: 33.00 (Windows)
 
 #ifndef EsmarqueHPP
 #define EsmarqueHPP
@@ -64,11 +64,11 @@ protected:
 	int smTextHeight;
 	int smTextWidth;
 	unsigned smTimerId;
-	void __fastcall smChanged(void);
-	void __fastcall smKillTimer(void);
-	void __fastcall smSetTimer(void);
+	void __fastcall smChanged();
+	void __fastcall smKillTimer();
+	void __fastcall smSetTimer();
 	void __fastcall smWndProc(Winapi::Messages::TMessage &Message);
-	System::Classes::TAlignment __fastcall GetAlignment(void);
+	System::Classes::TAlignment __fastcall GetAlignment();
 	void __fastcall SetActive(bool Value);
 	HIDESBASE void __fastcall SetAlignment(System::Classes::TAlignment Value);
 	void __fastcall SetBehavior(TEsBehaviors Value);
@@ -77,8 +77,8 @@ protected:
 	HIDESBASE MESSAGE void __fastcall CMColorChanged(Winapi::Messages::TWMNoParams &Message);
 	HIDESBASE MESSAGE void __fastcall CMFontChanged(Winapi::Messages::TWMNoParams &Message);
 	HIDESBASE MESSAGE void __fastcall CMTextChanged(Winapi::Messages::TWMNoParams &Message);
-	virtual void __fastcall Paint(void);
-	DYNAMIC void __fastcall DoOnCycle(void);
+	virtual void __fastcall Paint();
+	DYNAMIC void __fastcall DoOnCycle();
 	__property bool Active = {read=FActive, write=SetActive, default=0};
 	__property System::Classes::TAlignment Alignment = {read=GetAlignment, write=SetAlignment, nodefault};
 	__property TEsBehaviors Behavior = {read=FBehavior, write=SetBehavior, default=0};
@@ -88,8 +88,8 @@ protected:
 	
 public:
 	__fastcall virtual TEsCustomScrollingMarquee(System::Classes::TComponent* AOwner);
-	__fastcall virtual ~TEsCustomScrollingMarquee(void);
-	virtual void __fastcall Invalidate(void);
+	__fastcall virtual ~TEsCustomScrollingMarquee();
+	virtual void __fastcall Invalidate();
 };
 
 
@@ -137,7 +137,7 @@ __published:
 	__property OnMouseUp;
 public:
 	/* TEsCustomScrollingMarquee.Create */ inline __fastcall virtual TEsScrollingMarquee(System::Classes::TComponent* AOwner) : TEsCustomScrollingMarquee(AOwner) { }
-	/* TEsCustomScrollingMarquee.Destroy */ inline __fastcall virtual ~TEsScrollingMarquee(void) { }
+	/* TEsCustomScrollingMarquee.Destroy */ inline __fastcall virtual ~TEsScrollingMarquee() { }
 	
 };
 
