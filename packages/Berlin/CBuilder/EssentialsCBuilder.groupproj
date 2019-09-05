@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A409CA77-3247-43C3-94F9-35206C95F576}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="EssentialsCR.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="EssentialsDBCR.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="EssentialsCD.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="EssentialsCR">
+        <MSBuild Projects="EssentialsCR.cbproj"/>
+    </Target>
+    <Target Name="EssentialsCR:Clean">
+        <MSBuild Projects="EssentialsCR.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EssentialsCR:Make">
+        <MSBuild Projects="EssentialsCR.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="EssentialsDBCR">
+        <MSBuild Projects="EssentialsDBCR.cbproj"/>
+    </Target>
+    <Target Name="EssentialsDBCR:Clean">
+        <MSBuild Projects="EssentialsDBCR.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EssentialsDBCR:Make">
+        <MSBuild Projects="EssentialsDBCR.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="EssentialsCD">
+        <MSBuild Projects="EssentialsCD.cbproj"/>
+    </Target>
+    <Target Name="EssentialsCD:Clean">
+        <MSBuild Projects="EssentialsCD.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EssentialsCD:Make">
+        <MSBuild Projects="EssentialsCD.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="EssentialsCR;EssentialsDBCR;EssentialsCD"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="EssentialsCR:Clean;EssentialsDBCR:Clean;EssentialsCD:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="EssentialsCR:Make;EssentialsDBCR:Make;EssentialsCD:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
