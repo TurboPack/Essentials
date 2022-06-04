@@ -12,6 +12,9 @@
         <Projects Include="EssentialsDD.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="EssentialsDBDD.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -47,14 +50,23 @@
     <Target Name="EssentialsDD:Make">
         <MSBuild Projects="EssentialsDD.dproj" Targets="Make"/>
     </Target>
+    <Target Name="EssentialsDBDD">
+        <MSBuild Projects="EssentialsDBDD.dproj"/>
+    </Target>
+    <Target Name="EssentialsDBDD:Clean">
+        <MSBuild Projects="EssentialsDBDD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EssentialsDBDD:Make">
+        <MSBuild Projects="EssentialsDBDD.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="EssentialsDR;EssentialsDBDR;EssentialsDD"/>
+        <CallTarget Targets="EssentialsDR;EssentialsDBDR;EssentialsDD;EssentialsDBDD"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="EssentialsDR:Clean;EssentialsDBDR:Clean;EssentialsDD:Clean"/>
+        <CallTarget Targets="EssentialsDR:Clean;EssentialsDBDR:Clean;EssentialsDD:Clean;EssentialsDBDD:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="EssentialsDR:Make;EssentialsDBDR:Make;EssentialsDD:Make"/>
+        <CallTarget Targets="EssentialsDR:Make;EssentialsDBDR:Make;EssentialsDD:Make;EssentialsDBDD:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
