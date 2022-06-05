@@ -32,7 +32,8 @@ TurboPack Essentials package names have the following form:
 Delphi 
 * EssentialsDR.bpl (Delphi Runtime)
 * EssentialsDBDR.bpl (Delphi data aware Runtime)
-* EssentialsDD.bpl (Delphi Runtime)
+* EssentialsDD.bpl (Delphi Designtime)
+* EssentialsDBDD.bpl (Delphi data aware Designtime)
 
 C++Builder
 * EssentialsCR.bpl (C++Builder Runtime)
