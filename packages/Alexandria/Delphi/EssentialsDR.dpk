@@ -52,7 +52,7 @@ package EssentialsDR;
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'TurboPack Essentials Delphi Runtime package'}
-{$LIBSUFFIX '280'}
+{$LIBSUFFIX AUTO}
 {$RUNONLY}
 {$IMPLICITBUILD OFF}
 
